@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="card">
+	<div class="card-header header-elements-inline">
+		<h5 class="card-title">All Users</h5>
+		<div class="header-elements">
+			<div class="list-icons">
+				<a class="list-icons-item" data-action="collapse"></a>
+				<a class="list-icons-item" data-action="reload"></a>
+				<a class="list-icons-item" data-action="remove"></a>
+			</div>
+		</div>
+	</div>
+
+	<table class="table datatable-button-init-enroll_student">
+		<thead>
+			<tr>
+				<th></th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Course</th>
+				<th>DOB</th>
+				<th>Status</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{% for user in accounts %}
+			<tr>
+				<td></td>
+				<td>{{user.first_name}}</td>
+				<td><a href="#">{{student.accounts_account.last_name}}</a></td>
+				<td>{{student.course}}</td>
+				<td>{{student.accounts_account.dob}}</td>
+				{% if student.active == True %}
+					<td><span class="badge badge-success">Active</span></td>
+				{% else %}
+					<td><span class="badge bg-danger">Inactive</span></td>
+				{% endif %}
+				<td class="text-center">
+					<div class="list-icons">
+						<div class="dropdown">
+							<a href="#" class="list-icons-item" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="{% url 'edit_student' student.id %}" class="dropdown-item"><i class="icon-file-pdf"></i> Edit</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Delete</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-word"></i> Export to .pdf</a>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<!-- /whole row as a control -->
+
+{% endblock content %}

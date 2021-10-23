@@ -1,0 +1,272 @@
+{% include "head.html" %}
+{% load static %}
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-md navbar-dark">
+		<div class="navbar-brand">
+			<a href="../home.html" class="d-inline-block">
+				<img src="{% static 'global_assets/images/logo_light.png' %}" alt="">
+			</a>
+		</div>
+
+		<div class="d-md-none">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-tree5"></i>
+			</button>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar-mobile">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link">
+						<i class="icon-display4"></i>
+						<span class="d-md-none ml-2">Go to website</span>
+					</a>					
+				</li>
+
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link">
+						<i class="icon-user-tie"></i>
+						<span class="d-md-none ml-2">Contact admin</span>
+					</a>					
+				</li>
+
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link">
+						<i class="icon-cog3"></i>
+						<span class="d-md-none ml-2">Options</span>
+					</a>					
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content d-flex justify-content-center align-items-center">
+
+				<!-- Registration form -->
+				<form action="" method="post" class="flex-fill" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+					<div class="row">
+						<div class="col-lg-6 offset-lg-3">
+							<div class="card mb-0">
+								<div class="card-body">
+									<div class="text-center mb-3">
+										<i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
+										<h5 class="mb-0">Create account</h5>
+										<span class="d-block text-muted">All fields are required</span>
+									</div>
+
+									<div class="form-group text-center text-muted content-divider">
+										<span class="px-2">Create Account</span>
+									</div>
+
+									<div class="form-group form-group-feedback form-group-feedback-right">
+										<input type="email" class="form-control" name="email" placeholder="Physical Address">
+										<div class="form-control-feedback">
+											<i class="icon-user-plus text-muted"></i>
+										</div>
+									</div>
+
+
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="password" class="form-control" name="password1" placeholder="Password">
+
+												<div class="form-control-feedback">
+													<i class="icon-user-check text-muted"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+												<div class="form-control-feedback">
+													<i class="icon-user-check text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group text-center text-muted content-divider">
+										<span class="px-2">Create Profile</span>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="first_name" placeholder="First name">
+												<div class="form-control-feedback">
+													<i class="icon-user-check text-muted"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="last_name" placeholder="Last name">
+												<div class="form-control-feedback">
+													<i class="icon-user-check text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="cell" placeholder="Cell Number">
+												<div class="form-control-feedback">
+													<i class="icon-user-lock text-muted"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="tel" placeholder="Tel Number">
+												<div class="form-control-feedback">
+													<i class="icon-user-lock text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="country" placeholder="Nationality">
+												<div class="form-control-feedback">
+													<i class="icon-mention text-muted"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="idnum" placeholder="ID/Passport Number">
+												<div class="form-control-feedback">
+													<i class="icon-mention text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-lg-3 form-text text-muted">Upload a Profile Picture:</label>
+										<div class="col-lg-9">
+											<input type="file" name="image" class="form-input-styled" data-fouc>
+											<span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 5Mb</span>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-lg-3 form-text text-muted">Date of Birth:</label>
+										<div class="col-lg-9">
+											<input type="date" class="form-input-styled" name="dob">
+										</div>
+									</div>
+
+									<div class="form-group form-group-feedback form-group-feedback-right">
+										<input type="text" class="form-control" name="address" placeholder="Physical Address">
+										<div class="form-control-feedback">
+											<i class="icon-user-plus text-muted"></i>
+										</div>
+									</div>
+
+									<div class="form-group text-center text-muted content-divider">
+										<span class="px-2">Next of Kin Information</span>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="nextofkin" placeholder="Next of Kin Name">
+												<div class="form-control-feedback">
+													<i class="icon-mention text-muted"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="nok_cell" placeholder="Next of Kin Cell">
+												<div class="form-control-feedback">
+													<i class="icon-mention text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group form-group-feedback form-group-feedback-right">
+												<input type="text" class="form-control" name="nok_relationship" placeholder="Relationship">
+												<div class="form-control-feedback">
+													<i class="icon-mention text-muted"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="form-check">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-styled" checked data-fouc>
+												Send me <a href="#">test account settings</a>
+											</label>
+										</div>
+
+										<div class="form-check">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-styled" checked data-fouc>
+												Subscribe to monthly newsletter
+											</label>
+										</div>
+
+										<div class="form-check">
+											<label class="form-check-label">
+												<input type="checkbox" class="form-input-styled" data-fouc>
+												Accept <a href="#">terms of service</a>
+											</label>
+										</div>
+									</div>
+
+									<button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b> Create account</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- /registration form -->
+
+			</div>
+			<!-- /content area -->
+
+
+			<!-- Footer -->
+			{% include 'footer.html' %}
+			<!-- /footer -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</body>
+</html>

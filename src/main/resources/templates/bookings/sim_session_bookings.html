@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Whole row as a control -->
+<div class="card">
+	<div class="card-header header-elements-inline">
+		<h5 class="card-title">All Sim Session Bookings</h5>
+		<div class="header-elements">
+			<div class="list-icons">
+				<a class="list-icons-item" data-action="collapse"></a>
+				<a class="list-icons-item" data-action="reload"></a>
+				<a class="list-icons-item" data-action="remove"></a>
+			</div>
+		</div>
+	</div>
+
+	<table class="table datatable-button-init-sim_booking">
+		<thead>
+			<tr>
+				<th>Pilot</th>
+				<th>Session</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Status</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{% for sim_session_booking in sim_session_bookings %}
+			<tr>
+				<td>{{sim_session_booking.sim_pilot_in_command}}</td>
+				<td><a href="#">{{sim_session_booking.sim_session}}</a></td>
+				<td>{{sim_session_booking.start_time}}</td>
+				<td>{{sim_session_booking.end_time}}</td>
+				{% if sim_session_booking.sim_session.simulator.status == "AVAIL" %}
+					<td><span class="badge badge-success">Available</span></td>
+				{% else %}
+					<td><span class="badge bg-danger">Fully Booked</span></td>
+				{% endif %}
+
+				<td class="text-center">
+					<div class="list-icons">
+						<div class="dropdown">
+							<a href="#" class="list-icons-item" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Edit</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-word"></i> Delete</a>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+		{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<!-- /whole row as a control -->
+
+{% endblock content %}

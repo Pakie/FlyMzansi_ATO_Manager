@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>FlyMzansi | Flight School Management System</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/components.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+	<script src="https://kit.fontawesome.com/247d03d041.js" crossorigin="anonymous"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="../../../../assets/js/app.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_multiselect.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_select2.js"></script>
+	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
+
+	<script src="../../../../global_assets/js/demo_pages/dashboard.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_layouts.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_wizard.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/validation/validate.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/inputs/inputmask.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/wizards/steps.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/extensions/cookie.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/fullcalendar/core/main.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/fullcalendar/daygrid/main.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/fullcalendar/timegrid/main.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/fullcalendar/interaction/main.min.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/user_pages_profile.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/picker_date.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/anytime.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/pickadate/picker.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/pickadate/legacy.js"></script>
+	<script src="../../../../global_assets/js/plugins/notifications/jgrowl.min.js"></script>
+
+	<script src="../../../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/extra_sweetalert.js"></script>
+	<script src="../../../../assets/js/custom.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-expand-md navbar-dark">
+		<div class="navbar-brand">
+			<a href="index.html" class="d-inline-block">
+				<img src="../../../../global_assets/images/logo_light.png" alt="">
+			</a>
+		</div>
+
+		<div class="d-md-none">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+				<i class="icon-tree5"></i>
+			</button>
+			<button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+				<i class="icon-paragraph-justify3"></i>
+			</button>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar-mobile">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+						<i class="icon-paragraph-justify3"></i>
+					</a>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+						<i class="icon-git-compare"></i>
+						<span class="d-md-none ml-2">Git updates</span>
+						<span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">9</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-content wmin-md-350">
+						<div class="dropdown-content-header">
+							<span class="font-weight-semibold">Git updates</span>
+							<a href="#" class="text-default"><i class="icon-sync"></i></a>
+						</div>
+
+						<div class="dropdown-content-body dropdown-scrollable">
+							<ul class="media-list">
+								<li class="media">
+									<div class="mr-3">
+										<a href="#" class="btn bg-transparent border-primary text-primary rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
+									</div>
+
+									<div class="media-body">
+										Drop the IE <a href="#">specific hacks</a> for temporal inputs
+										<div class="text-muted font-size-sm">4 minutes ago</div>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<a href="#" class="btn bg-transparent border-warning text-warning rounded-round border-2 btn-icon"><i class="icon-git-commit"></i></a>
+									</div>
+									
+									<div class="media-body">
+										Add full font overrides for popovers and tooltips
+										<div class="text-muted font-size-sm">36 minutes ago</div>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<a href="#" class="btn bg-transparent border-info text-info rounded-round border-2 btn-icon"><i class="icon-git-branch"></i></a>
+									</div>
+									
+									<div class="media-body">
+										<a href="#">Chris Arney</a> created a new <span class="font-weight-semibold">Design</span> branch
+										<div class="text-muted font-size-sm">2 hours ago</div>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<a href="#" class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i class="icon-git-merge"></i></a>
+									</div>
+									
+									<div class="media-body">
+										<a href="#">Eugene Kopyov</a> merged <span class="font-weight-semibold">Master</span> and <span class="font-weight-semibold">Dev</span> branches
+										<div class="text-muted font-size-sm">Dec 18, 18:36</div>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<a href="#" class="btn bg-transparent border-primary text-primary rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
+									</div>
+									
+									<div class="media-body">
+										Have Carousel ignore keyboard events
+										<div class="text-muted font-size-sm">Dec 12, 05:46</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="dropdown-content-footer bg-light">
+							<a href="#" class="text-grey mr-auto">All updates</a>
+							<div>
+								<a href="#" class="text-grey" data-popup="tooltip" title="Mark all as read"><i class="icon-radio-unchecked"></i></a>
+								<a href="#" class="text-grey ml-2" data-popup="tooltip" title="Bug tracker"><i class="icon-bug2"></i></a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<span class="badge bg-success ml-md-3 mr-md-auto">Online</span>
+
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+						<i class="icon-people"></i>
+						<span class="d-md-none ml-2">Users</span>
+					</a>
+					
+					<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-300">
+						<div class="dropdown-content-header">
+							<span class="font-weight-semibold">Users online</span>
+							<a href="#" class="text-default"><i class="icon-search4 font-size-base"></i></a>
+						</div>
+
+						<div class="dropdown-content-body dropdown-scrollable">
+							<ul class="media-list">
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<a href="#" class="media-title font-weight-semibold">Jordana Ansley</a>
+										<span class="d-block text-muted font-size-sm">Lead web developer</span>
+									</div>
+									<div class="ml-3 align-self-center"><span class="badge badge-mark border-success"></span></div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<a href="#" class="media-title font-weight-semibold">Will Brason</a>
+										<span class="d-block text-muted font-size-sm">Marketing manager</span>
+									</div>
+									<div class="ml-3 align-self-center"><span class="badge badge-mark border-danger"></span></div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<a href="#" class="media-title font-weight-semibold">Hanna Walden</a>
+										<span class="d-block text-muted font-size-sm">Project manager</span>
+									</div>
+									<div class="ml-3 align-self-center"><span class="badge badge-mark border-success"></span></div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<a href="#" class="media-title font-weight-semibold">Dori Laperriere</a>
+										<span class="d-block text-muted font-size-sm">Business developer</span>
+									</div>
+									<div class="ml-3 align-self-center"><span class="badge badge-mark border-warning-300"></span></div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<a href="#" class="media-title font-weight-semibold">Vanessa Aurelius</a>
+										<span class="d-block text-muted font-size-sm">UX expert</span>
+									</div>
+									<div class="ml-3 align-self-center"><span class="badge badge-mark border-grey-400"></span></div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="dropdown-content-footer bg-light">
+							<a href="#" class="text-grey mr-auto">All users</a>
+							<a href="#" class="text-grey"><i class="icon-gear"></i></a>
+						</div>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+						<i class="icon-bubbles4"></i>
+						<span class="d-md-none ml-2">Messages</span>
+						<span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">2</span>
+					</a>
+					
+					<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
+						<div class="dropdown-content-header">
+							<span class="font-weight-semibold">Messages</span>
+							<a href="#" class="text-default"><i class="icon-compose"></i></a>
+						</div>
+
+						<div class="dropdown-content-body dropdown-scrollable">
+							<ul class="media-list">
+								<li class="media">
+									<div class="mr-3 position-relative">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+
+									<div class="media-body">
+										<div class="media-title">
+											<a href="#">
+												<span class="font-weight-semibold">James Alexander</span>
+												<span class="text-muted float-right font-size-sm">04:58</span>
+											</a>
+										</div>
+
+										<span class="text-muted">who knows, maybe that would be the best thing for me...</span>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3 position-relative">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+
+									<div class="media-body">
+										<div class="media-title">
+											<a href="#">
+												<span class="font-weight-semibold">Margo Baker</span>
+												<span class="text-muted float-right font-size-sm">12:16</span>
+											</a>
+										</div>
+
+										<span class="text-muted">That was something he was unable to do because...</span>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-title">
+											<a href="#">
+												<span class="font-weight-semibold">Jeremy Victorino</span>
+												<span class="text-muted float-right font-size-sm">22:48</span>
+											</a>
+										</div>
+
+										<span class="text-muted">But that would be extremely strained and suspicious...</span>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-title">
+											<a href="#">
+												<span class="font-weight-semibold">Beatrix Diaz</span>
+												<span class="text-muted float-right font-size-sm">Tue</span>
+											</a>
+										</div>
+
+										<span class="text-muted">What a strenuous career it is that I've chosen...</span>
+									</div>
+								</li>
+
+								<li class="media">
+									<div class="mr-3">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-title">
+											<a href="#">
+												<span class="font-weight-semibold">Richard Vango</span>
+												<span class="text-muted float-right font-size-sm">Mon</span>
+											</a>
+										</div>
+										
+										<span class="text-muted">Other travelling salesmen live a life of luxury...</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="dropdown-content-footer justify-content-center p-0">
+							<a href="#" class="bg-light text-grey w-100 py-2" data-popup="tooltip" title="Load more"><i class="icon-menu7 d-block top-0"></i></a>
+						</div>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown dropdown-user">
+					<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+						<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
+						<span>Victoria</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+						<a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
+						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+						<a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main sidebar -->
+		<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+
+			<!-- Sidebar mobile toggler -->
+			<div class="sidebar-mobile-toggler text-center">
+				<a href="#" class="sidebar-mobile-main-toggle">
+					<i class="icon-arrow-left8"></i>
+				</a>
+				Navigation
+				<a href="#" class="sidebar-mobile-expand">
+					<i class="icon-screen-full"></i>
+					<i class="icon-screen-normal"></i>
+				</a>
+			</div>
+			<!-- /sidebar mobile toggler -->
+
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- User menu -->
+				<div class="sidebar-user">
+					<div class="card-body">
+						<div class="media">
+							<div class="mr-3">
+								<a href="#"><img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="38" height="38" class="rounded-circle" alt=""></a>
+							</div>
+
+							<div class="media-body">
+								<div class="media-title font-weight-semibold">Victoria Baker</div>
+								<div class="font-size-xs opacity-50">
+									<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+								</div>
+							</div>
+
+							<div class="ml-3 align-self-center">
+								<a href="#" class="text-white"><i class="icon-cog3"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /user menu -->
+
+
+				<!-- Main navigation -->
+				<div class="card card-sidebar-mobile">
+					<ul class="nav nav-sidebar" data-nav-type="accordion">
+
+						<!-- Main -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
+						<li class="nav-item">
+							<a th:href="@{/}" class="nav-link active">
+								<i class="icon-home4"></i>
+								<span>
+									Dashboard
+								</span>
+							</a>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-chart-line"></i> <span>Management</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Themes">
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Users</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/}" class="nav-link">All Users</a></li>
+										<li class="nav-item"><a th:href="@{/}" class="nav-link">Add User</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Customers</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/customers}" class="nav-link">All Customers</a></li>
+										<li class="nav-item"><a th:href="@{/customers/add-customer}" class="nav-link">Add Customer</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Companies</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/companies}" class="nav-link">All Companies</a></li>
+										<li class="nav-item"><a th:href="@{/companies/add-company}" class="nav-link">Add Company</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Departments</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/departments}" class="nav-link">All Departments</a></li>
+										<li class="nav-item"><a th:href="@{/departments/add-department}" class="nav-link">Add Department</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Statuses</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/statuses}" class="nav-link">All Statuses</a></li>
+										<li class="nav-item"><a th:href="@{/statuses/add-status}" class="nav-link">Add Status</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item-divider"></li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Rooms</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/rooms}" class="nav-link">All Rooms</a></li>
+										<li class="nav-item"><a th:href="@{/rooms/add-room}" class="nav-link">Add Room</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Room Categories</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/rooms/room-categories}" class="nav-link">All Room Categories</a></li>
+										<li class="nav-item"><a th:href="@{/rooms/room-categories/add-room-category}" class="nav-link">Add Room Category</a></li>
+									</ul>
+								</li>
+
+							</ul>
+						</li>
+
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-users2 mr-3 icon-1x"></i> <span>Employees</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Themes">
+								<li class="nav-item"><a th:href="@{/employees}" class="nav-link active">All Employees</a></li>
+								<li class="nav-item"><a th:href="@{/employees/add-employee}" class="nav-link">Add Employee</a></li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Employment Types</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/employees/employment-types}" class="nav-link">All Employment Types</a></li>
+										<li class="nav-item"><a th:href="@{/employees/employment-types/add-employment-type}" class="nav-link">Add Employment Type</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Employment Positions</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/employees/employment-positions}" class="nav-link">All Employment Positions</a></li>
+										<li class="nav-item"><a th:href="@{/employees/employment-positions/add-employment-position}" class="nav-link">Add Employment Position</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i> <span>Instructors</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a th:href="@{/employees/instructors}" class="nav-link active">All Instructors</a></li>
+								<li class="nav-item"><a th:href="@{/employees/instructors/add-instructor}" class="nav-link">Add Instructor</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fas fa-user-graduate"></i> <span>Students</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a th:href="@{/students}" class="nav-link active">All Students</a></li>
+								<li class="nav-item"><a th:href="@{/students/add-student}" class="nav-link">Add Student</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-user-tie"></i> <span>Pilots</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a th:href="@{/pilots}" class="nav-link active">All Pilots</a></li>
+								<li class="nav-item"><a th:href="@{/pilots/add-pilot}" class="nav-link">Add Pilot</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-user-gear"></i></i><span>Mechanics</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a th:href="@{/mechanics}" class="nav-link active">All Mechanics</a></li>
+								<li class="nav-item"><a th:href="@{/mechanics/add-mechanic}" class="nav-link">Add Mechanic</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-wallet"></i> <span>Sponsor</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a th:href="@{/sponsors}" class="nav-link active">All Sponsors</a></li>
+								<li class="nav-item"><a th:href="@{/sponsors/add-sponsor}" class="nav-link">Add Sponsor</a></li>
+							</ul>
+						</li>
+						<!-- /main -->
+
+						<!-- School Ops -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">School Ops</div> <i class="icon-menu" title="Forms"></i></li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-books mr-3 icon-1x"></i> <span>Courses</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Form components">
+								<li class="nav-item"><a th:href="@{/courses}" class="nav-link">All Courses</a></li>
+								<li class="nav-item"><a th:href="@{/courses/add-course}" class="nav-link">Add Course</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link"><i class="fa-solid fa-book"></i> Subjects</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/courses/subjects}" class="nav-link">All Subjects</a></li>
+										<li class="nav-item"><a th:href="@{/courses/subjects/add-subject}" class="nav-link">Add Subject</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link"><i class="fa-solid fa-book-open"></i>Exams</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/courses/subjects/exams}" class="nav-link">All Exams</a></li>
+										<li class="nav-item"><a th:href="@{/courses/subjects/add-exam}" class="nav-link">Add Exam</a></li>
+									</ul>
+								</li>
+
+							</ul>
+
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-chalkboard"></i> <span>Ground School</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="JSON forms">
+								<li class="nav-item"><a th:href="@{/ground_schools}" class="nav-link">All Ground Schools</a></li>
+								<li class="nav-item"><a th:href="@{/ground_schools/add-ground-school}" class="nav-link">Add Ground School</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-regular fa-comments"></i><span>Briefings</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Briefings">
+								<li class="nav-item"><a th:href="@{/briefings}" class="nav-link">All Briefings</a></li>
+								<li class="nav-item"><a th:href="@{/briefings/add-briefing}" class="nav-link">Add Briefing</a></li>
+							</ul>
+						</li>
+						<!-- /School Ops -->
+
+						<!-- Flight Ops -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Flight Ops</div> <i class="icon-menu" title="Components"></i></li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-airplane2 mr-3 icon-1x"></i><span>Aircraft</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Aircraft">
+								<li class="nav-item"><a th:href="@{/aircrafts}" class="nav-link">All Aircraft</a></li>
+								<li class="nav-item"><a th:href="@{/aircrafts/add-aircraft}" class="nav-link">Add Aircraft</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Aircraft Types</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/aircrafts/aircraft-types}" class="nav-link">All Aircraft Types</a></li>
+										<li class="nav-item"><a th:href="@{/aircrafts/aircraft-types/add-aircraft-type}" class="nav-link">Add Aircraft Type</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Aircraft Maintenances</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/aircrafts/aircraft-maintenances}" class="nav-link">All Aircraft Maintenances</a></li>
+										<li class="nav-item"><a th:href="@{/aircrafts/aircraft-maintenances/add-aircraft-maintenance}" class="nav-link">Add Aircraft Maintenance</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-play"></i> <span>Simulators</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Simulators">
+								<li class="nav-item"><a th:href="@{/simulators}" class="nav-link">All Simulators</a></li>
+								<li class="nav-item"><a th:href="@{/simulators/add-simulator}" class="nav-link">Add Simulator</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Sim Sessions</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a th:href="@{/simulators/sim-sessions}" class="nav-link">All Sim Sessions</a></li>
+										<li class="nav-item"><a th:href="@{/simulators/sim-sessions/add-sim-session}" class="nav-link">Add Sim Session</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-vcard mr-3 icon-1x"></i> <span>Licenses</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Icons">
+								<li class="nav-item"><a th:href="@{/licenses}"  class="nav-link">All Licenses</a></li>
+								<li class="nav-item"><a th:href="@{/licenses/add-license}"  class="nav-link">Add License</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa fa-plane-departure"></i> <span>Flights</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Icons">
+								<li class="nav-item"><a th:href="@{/flights}"  class="nav-link">All Flights</a></li>
+								<li class="nav-item"><a th:href="@{/flights/add-flight}"  class="nav-link">Add flight</a></li>
+							</ul>
+						</li>
+
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>Ratings</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Briefings">
+								<li class="nav-item"><a th:href="@{/ratings}" class="nav-link">All Ratings</a></li>
+								<li class="nav-item"><a th:href="@{/ratings/add-rating}" class="nav-link">Add Rating</a></li>
+							</ul>
+						</li>
+						<!-- /Flight Ops -->
+
+						<!-- Accounts -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Accounts</div> <i class="icon-menu" title="Layout options"></i></li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-file-invoice"></i><span>Invoices</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Invoices">
+								<li class="nav-item"><a href="#" class="nav-link">All Invoices</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">Add Invoice</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list"></i> <span>Statements</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Statements">
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">All Statements</a>
+									<a href="#" class="nav-link">Add Statement</a>
+								</li>
+							</ul>
+						</li>
+						<!-- /Accounts -->
+
+						<!-- Extras-->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Extras</div> <i class="icon-menu" title="Data visualization"></i></li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="fa-solid fa-calendar-days"></i>Events</a>
+							<ul class="nav nav-group-sub">
+								<li class="nav-item"><a th:href="@{/events}" class="nav-link">All Events</a></li>
+								<li class="nav-item"><a th:href="@{/events/add-event}" class="nav-link">Add Event</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link disabled"><i class="fa-solid fa-cloud-sun-rain"></i> <span>Weather</span><span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link disabled"><i class="fa-solid fa-calculator"></i> <span>WB Calculator</span><span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a>
+						</li>
+						<!-- / Extras -->
+					</ul>
+				</div>
+				<!-- /main navigation -->
+			</div>
+			<!-- /sidebar content -->
+		</div>
+		<!-- /main sidebar -->
+
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Page header -->
+			<div class="page-header page-header-light">
+				<div class="page-header-content header-elements-md-inline">
+					<div class="page-title d-flex">
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+					<div class="header-elements d-none">
+						<div class="d-flex justify-content-center">
+							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+					<div class="d-flex">
+						<div class="breadcrumb">
+							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<span class="breadcrumb-item active">Dashboard</span>
+						</div>
+
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+					<div class="header-elements d-none">
+						<div class="breadcrumb justify-content-center">
+							<a href="#" class="breadcrumb-elements-item">
+								<i class="icon-comment-discussion mr-2"></i>
+								Support
+							</a>
+
+							<div class="breadcrumb-elements-item dropdown p-0">
+								<a href="#" class="breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-gear mr-2"></i>
+									Settings
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a href="#" class="dropdown-item"><i class="icon-user-lock"></i> Account security</a>
+									<a href="#" class="dropdown-item"><i class="icon-statistics"></i> Analytics</a>
+									<a href="#" class="dropdown-item"><i class="icon-accessibility"></i> Accessibility</a>
+									<div class="dropdown-divider"></div>
+									<a href="#" class="dropdown-item"><i class="icon-gear"></i> All settings</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page header -->
+
+			<!-- Content area -->
+			<div class="content">
+					<div layout:fragment="content">
+						<p>Changing contents will be here</p>
+					</div>
+
+				<!-- /dashboard content -->
+			</div>
+			<!-- /content area -->
+
+			<!-- Footer -->
+			<div class="navbar navbar-expand-lg navbar-light">
+				<div class="text-center d-lg-none w-100">
+					<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+						<i class="icon-unfold mr-2"></i>
+						Footer
+					</button>
+				</div>
+
+				<div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+						&copy; 2015 - 2018. <a href="#">FlyMzansi Air School system </a> by <a href="#" target="_blank">Afro System Pty(LTD).</a>
+					</span>
+
+					<ul class="navbar-nav ml-lg-auto">
+						<li class="nav-item"><a href="https://kopyov.ticksy.com/" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Support</a></li>
+						<li class="nav-item"><a href="http://demo.interface.club/limitless/docs/" class="navbar-nav-link" target="_blank"><i class="icon-file-text2 mr-2"></i> Docs</a></li>
+						<li class="nav-item"><a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov" class="navbar-nav-link font-weight-semibold"><span class="text-pink-400"><i class="icon-cart2 mr-2"></i> Purchase</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /footer -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</body>
+</html>

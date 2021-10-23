@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Aircraft Types</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">All Aircraft Types</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table datatable-button-init-add_aircraft_type">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Aircraft Type</th>
+                <th>Description</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="aircraftType: ${aircraftTypes}">
+                <td th:text="${aircraftType.id}"></td>
+                <td th:text="${aircraftType.title}"><a href="#"></a></td>
+                <td th:text="${aircraftType.description}"></td>
+                <td class="text-center">
+                    <div class="list-icons">
+                        <div class="dropdown">
+                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item" id="sweet_combine"><i class="icon-file-pdf"></i> View</a>
+                                <a th:href="@{/aircrafts/aircraft-types/update-aircraft-type/{id}(id=${aircraftType.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                <a th:href="@{/aircrafts/aircraft-types/delete-aircraft-type/{id}(id=${aircraftType.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /whole row as a control -->
+</div>
+</body>
+</html>

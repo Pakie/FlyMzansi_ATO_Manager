@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Whole row as a control -->
+<div class="card">
+	<div class="card-header header-elements-inline">
+		<h5 class="card-title">All Event Bookings</h5>
+		<div class="header-elements">
+			<div class="list-icons">
+				<a class="list-icons-item" data-action="collapse"></a>
+				<a class="list-icons-item" data-action="reload"></a>
+				<a class="list-icons-item" data-action="remove"></a>
+			</div>
+		</div>
+	</div>
+
+	<table class="table datatable-button-init-event_booking">
+		<thead>
+			<tr>
+				<th>Event</th>
+				<th>User</th>
+				<th>Event Date</th>
+				<th>Status</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{% for eventbooking in event_bookings %}
+
+			<tr>
+				<td>{{eventbooking.event.title}}</td>
+				<td><a href="#">{{eventbooking.user}}</a></td>
+				<td>{{eventbooking.event.start_time}}</td>
+				<td><span class="badge badge-success">Paid</span></td>
+				<td class="text-center">
+					<div class="list-icons">
+						<div class="dropdown">
+							<a href="#" class="list-icons-item" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Edit</a>
+								<a href="#" class="dropdown-item"><i class="icon-file-word"></i> Delete</a>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+		{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<!-- /whole row as a control -->
+
+{% endblock content %}

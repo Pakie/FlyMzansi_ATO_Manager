@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyMzansi | All Briefings</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--Content of the page-->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">All Briefings</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table datatable-button-init-add_briefing">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Briefing</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="briefing: ${briefings}">
+                <td th:text="${briefing.id}"></td>
+                <td th:text="${briefing.title}"><a href="#"></a></td>
+                <td th:text="${briefing.description}"></td>
+                <td th:text="${briefing.pricePerHour}"></td>
+                <td class="text-center">
+                    <div class="list-icons">
+                        <div class="dropdown">
+                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
+                                <a th:href="@{/briefings/update-briefing/{id}(id=${briefing.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                <a th:href="@{/briefings/delete-briefing/{id}(id=${briefing.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /whole row as a control -->
+</div>
+</body>
+</html>

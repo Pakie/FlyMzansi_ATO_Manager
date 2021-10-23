@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Exam</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- Add Rating layout-->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Update Exam</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form action="#" th:action="@{/saveExam}" th:object="${exam}" method="post">
+                <input hidden th:field="*{id}" th:value="${exam.id}">
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Title:</label>
+                    <div class="col-lg-9">
+                        <input type="text" th:field="*{title}" class="form-control" name="title">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Description:</label>
+                    <div class="col-lg-9">
+                        <input type="text" th:field="*{description}" class="form-control" name="description">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Course:</label>
+                    <div class="col-lg-9">
+                        <select th:field="*{subject}" class="form-control select-clear" data-fouc>
+                            <th:block th:each="subject: ${subjects}">
+                                <option th:value="${subject.id}" th:text="${subject.title}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Save <i class="icon-paperplane ml-2"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /Add Course layout -->
+</div>
+</body>
+</html>

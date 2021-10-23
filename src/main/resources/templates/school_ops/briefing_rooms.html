@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Whole row as a control -->
+<div class="card">
+	<div class="card-header header-elements-inline">
+		<h5 class="card-title">All Briefing Rooms</h5>
+		<div class="header-elements">
+			<div class="list-icons">
+				<a class="list-icons-item" data-action="collapse"></a>
+				<a class="list-icons-item" data-action="reload"></a>
+				<a class="list-icons-item" data-action="remove"></a>
+			</div>
+		</div>
+	</div>
+
+	<table class="table datatable-button-init-add_room">
+		<thead>
+			<tr>
+				<th>Briefing Room</th>
+				<th>Status</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{briefingroom.title}}
+		{% for briefingroom in briefing_rooms %}
+			<tr>
+				<td>{{briefingroom.title}}</td>
+				<td><span class="badge badge-success">Active</span></td>
+				<td class="text-center">
+					<div class="list-icons">
+						<div class="dropdown">
+							<a href="#" class="list-icons-item" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="{% url 'edit_room' briefingroom.id %}" class="dropdown-item"><i class="icon-pencil"></i> Edit Room</a>
+								<a href="{% url 'delete_room' briefingroom.id %}" class="dropdown-item"><i class="icon-bin"></i> Delete Room</a>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<!-- /whole row as a control -->
+
+{% endblock content %}

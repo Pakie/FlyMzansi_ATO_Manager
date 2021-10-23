@@ -1,0 +1,312 @@
+{% load static %}
+
+        <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+
+			<!-- Sidebar mobile toggler -->
+			<div class="sidebar-mobile-toggler text-center">
+				<a href="#" class="sidebar-mobile-main-toggle">
+					<i class="icon-arrow-left8"></i>
+				</a>
+				Navigation
+				<a href="#" class="sidebar-mobile-expand">
+					<i class="icon-screen-full"></i>
+					<i class="icon-screen-normal"></i>
+				</a>
+			</div>
+			<!-- /sidebar mobile toggler -->
+
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- User menu -->
+				<div class="sidebar-user">
+					<div class="card-body">
+						<div class="media">
+							<div class="mr-3">
+								<a href="{% url 'profile' %}"><img src="{{user.image.url}}" width="38" height="38" class="rounded-circle" alt=""></a>
+							</div>
+
+							<div class="media-body">
+								{% if user.is_authenticated %}
+								<div class="media-title font-weight-semibold"><span>{{user.first_name}} {{user.last_name}}</span>
+								{% endif %}
+								</div>
+								<div class="font-size-xs opacity-50">
+									<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+								</div>
+							</div>
+
+							<div class="ml-3 align-self-center">
+								<a href="#" class="text-white"><i class="icon-cog3"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /user menu -->
+
+
+				<!-- Main navigation -->
+				<div class="card card-sidebar-mobile">
+					<ul class="nav nav-sidebar" data-nav-type="accordion">
+
+						<!-- Main -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
+						<li class="nav-item">
+							<a href="{% url 'home' %}" class="nav-link active">
+								<i class="icon-home4"></i>
+								<span>
+									Dashboard
+								</span>
+							</a>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-airplane3"></i> <span>Flight Operations</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Fleet</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="{% url 'aircraft_fleet' %}" class="nav-link">All Fleet</a></li>
+										<li class="nav-item"><a href="{% url 'add_aircraft' %}" class="nav-link">Add New Aircraft</a></li>
+										<li class="nav-item"><a href="{% url 'maintenance_bookings' %}" class="nav-link">Maintenance Bookings</a></li>
+										<li class="nav-item"><a href="{% url 'maintenance_booking' %}" class="nav-link">Book Maintenance</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Flight Folio</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Flights</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="{% url 'solo_flights' %}" class="nav-link">Solo Flights</a></li>
+										<li class="nav-item"><a href="{% url 'add_solo_flight' %}" class="nav-link">Add Solo Flight</a></li>
+										<li class="nav-item"><a href="{% url 'dual_flights' %}" class="nav-link">Dual Flights</a></li>
+										<li class="nav-item"><a href="{% url 'add_dual_flight' %}" class="nav-link">Add Dual Flight</a></li>
+										<li class="nav-item"><a href="{% url 'soloflightbookings_list' %}" class="nav-link">Solo Flight Bookings</a></li>
+										<li class="nav-item"><a href="{% url 'solo_flight_booking' %}" class="nav-link">Book a Solo Flight</a></li>
+										<li class="nav-item"><a href="{% url 'soloflightbookings_list' %}" class="nav-link">Dual Flight Bookings</a></li>
+										<li class="nav-item"><a href="{% url 'dual_flight_booking' %}" class="nav-link">Book a Dual Flight</a></li>
+										<li class="nav-item"><a href="{% url 'briefing_bookings' %}" class="nav-link">All Briefing Bookings</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Briefings</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="{% url 'briefing_bookings' %}" class="nav-link">Briefing Bookings</a></li>
+										<li class="nav-item"><a href="{% url 'briefing_booking' %}" class="nav-link">Booking a Briefing</a></li>
+										<li class="nav-item"><a href="{% url 'briefing_rooms' %}" class="nav-link">All Briefing Rooms</a></li>
+										<li class="nav-item"><a href="{% url 'add_room' %}" class="nav-link">Add Briefing Room</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Simulator</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="{% url 'simulators' %}" class="nav-link">All Simulators</a></li>
+										<li class="nav-item"><a href="{% url 'add_simulator' %}" class="nav-link">Add Simulator</a></li>
+										<li class="nav-item"><a href="{% url 'sim_session_bookings' %}" class="nav-link">Simulator Bookings</a></li>
+										<li class="nav-item"><a href="{% url 'sim_session_booking' %}" class="nav-link">Book a Sim Session</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item"><a href="#" class="nav-link disabled">Weather and Notams<span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
+								<li class="nav-item"><a href="#" class="nav-link disabled">Weight and Balance<span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-users2"></i> <span>Users</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Themes">
+								<li class="nav-item"><a href="#" class="nav-link active">All Users</a></li>
+								<li class="nav-item"><a href="#" class="nav-link active">Add User</a></li>
+
+								<li class="nav-item"><a href="#" class="nav-link disabled">Other<span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Instructors</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+								<li class="nav-item"><a href="{% url 'instructor_list' %}" class="nav-link">All Instructors</a></li>
+								<li class="nav-item"><a href="{% url 'add_instructor' %}" class="nav-link">Add Instructor</a></li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-graduation"></i> <span>Students</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+								<li class="nav-item"><a href="{% url 'student_list' %}" class="nav-link">All Students</a></li>
+								<li class="nav-item"><a href="{% url 'enroll_student' %}" class="nav-link">Enroll Student</a></li>
+
+							</ul>
+						</li>
+
+						<!-- /main -->
+
+						<!-- Courses -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Courses</div> <i class="icon-menu" title="Forms"></i></li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>All Courses</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Form components">
+								<li class="nav-item"><a href="{% url 'courses' %}" class="nav-link">View All</a></li>
+								<li class="nav-item"><a href="{% url 'add_course' %}" class="nav-link">Add Course</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Ground School</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Book Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">PPL Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Add Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Edit Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Attendance Register</a></li>
+									</ul>
+								</li>
+								<li class="nav-item"><a href="{% url 'subject_list' %}" class="nav-link">Subjects</a></li>
+								<li class="nav-item"><a href="{% url 'add_subject' %}" class="nav-link">Add Subject</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Exams</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="{% url 'exam_booking' %}" class="nav-link active">Book Exam</a></li>
+										<li class="nav-item"><a href="{% url 'exam_bookings' %}" class="nav-link">All Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Add Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Edit Exams</a></li>
+									</ul>
+								</li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Ratings</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Night Rating</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Instrument Rating</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Type Rating</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-select2"></i> <span>CPL</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Pickers">
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Ground School</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Book Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">CPL Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Add Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Edit Ground School</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Attendance Register</a></li>
+									</ul>
+								</li>
+								<li class="nav-item"><a href="#" class="nav-link">Subjects</a></li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Exams</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Book Exam</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">All Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Add Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Edit Exams</a></li>
+									</ul>
+								</li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Ratings</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Multi-Engine Rating</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Instructor's Rating</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Type Rating</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-insert-template"></i> <span>ATPL</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Form layouts">
+								<li class="nav-item"><a href="#" class="nav-link">Modules</a></li>
+
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Exams</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Book Exam</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">All Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Add Exams</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Edit Exams</a></li>
+									</ul>
+								</li>
+								<li class="nav-item nav-item-submenu">
+									<a href="#" class="nav-link">Ratings</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item"><a href="#" class="nav-link active">Coming Soon</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+									</ul>
+								</li>
+
+							</ul>
+						</li>
+						<!-- /Courses -->
+
+						<!-- Billing -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Billing</div> <i class="icon-menu" title="Components"></i></li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Invoices</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Basic components">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-puzzle2"></i> <span>Statement</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Content styling">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-gift"></i> <span>Credit Notes</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Extra components">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+							</ul>
+						</li>
+
+						<!-- /Billing -->
+
+						<!-- Extras -->
+						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Extras</div> <i class="icon-menu" title="Components"></i></li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Events</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Basic components">
+								<li class="nav-item"><a href="{% url 'events' %}" class="nav-link">All Events</a></li>
+								<li class="nav-item"><a href="{% url 'event_bookings' %}" class="nav-link">Event Bookings</a></li>
+
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-puzzle2"></i> <span>Downloads</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Content styling">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-gift"></i> <span>Useful Links</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Extra components">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-droplet2"></i> <span>News</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Color system">
+								<li class="nav-item"><a href="#" class="nav-link">Coming Soon</a></li>
+							</ul>
+						</li>
+
+						<!-- Extras -->
+
+					</ul>
+				</div>
+				<!-- /main navigation -->
+
+			</div>
+			<!-- /sidebar content -->
+
+		</div>

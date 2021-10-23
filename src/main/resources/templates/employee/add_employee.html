@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- Add Rating layout-->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Add A New Employee</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">First Name:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" name="firstName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Last Name:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" name="lastName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Email:</label>
+                    <div class="col-lg-5">
+                        <input type="email" th:field="*{email}" class="form-control" placeholder="Email Address" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Cell:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{cell}" class="form-control" placeholder="Cell" name="cell">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Start Date:</label>
+                    <div class="col-lg-5">
+                        <input th:text="*{startDate}" class="form-control" type="date" name="startDate">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Salary:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{salary}" class="form-control" placeholder="Salary" name="salary">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Tax Number:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{taxNumber}" class="form-control" placeholder="Tax Number" name="taxNumber">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Address:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{address}" class="form-control" placeholder="Address" name="address">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Department:</label>
+                    <div class="col-lg-5">
+                        <select th:field="*{department}" data-placeholder="Select a department" class="form-control select-clear" data-fouc>
+                            <th:block th:each="department: ${departments}">
+                                <option th:value="${department.id}" th:text="${department.title}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Employment Postion:</label>
+                    <div class="col-lg-5">
+                        <select th:field="*{employmentPosition}" data-placeholder="Select a job position" class="form-control select-clear" data-fouc>
+                            <th:block th:each="empPosition: ${employmentPositions}">
+                                <option th:value="${empPosition.id}" th:text="${empPosition.title}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Employment Type:</label>
+                    <div class="col-lg-5">
+                        <select th:field="*{employmentType}" data-placeholder="Select employment type" class="form-control select-clear" data-fouc>
+                            <th:block th:each="empType: ${employmentTypes}">
+                                <option th:value="${empType.id}" th:text="${empType.title}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Save <i class="icon-paperplane ml-2"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /Add Course layout -->
+</div>
+</body>
+</html>

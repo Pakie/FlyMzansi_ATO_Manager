@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Customers</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">All Customers</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table datatable-button-init-add_customer">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Cell No.</th>
+                <th>Status</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="customer: ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"><a href="#"></a></td>
+                <td th:text="${customer.email}">Place Holder</td>
+                <td th:text="${customer.cell}">Course</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td class="text-center">
+                    <div class="list-icons">
+                        <div class="dropdown">
+                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
+                                <a th:href="@{/customers/update-customer/{id}(id=${customer.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                <a th:href="@{/customers/update-customer/{id}(id=${customer.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /whole row as a control -->
+</div>
+</body>
+</html>
