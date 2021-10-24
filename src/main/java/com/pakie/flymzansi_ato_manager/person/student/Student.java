@@ -7,6 +7,7 @@ import com.pakie.flymzansi_ato_manager.common_objects.rating.Rating;
 import com.pakie.flymzansi_ato_manager.person.Person;
 import com.pakie.flymzansi_ato_manager.person.instructor.Instructor;
 import com.pakie.flymzansi_ato_manager.person.sponsor.Sponsor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,7 +30,9 @@ public class Student extends Person {
     private Course course;
     @ManyToOne(fetch = FetchType.EAGER)
     private License license;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate licenseExpiryDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate medicalExpiryDate;
     @ManyToOne
     @JoinColumn(name = "aircraft_id")
@@ -57,8 +60,8 @@ public class Student extends Person {
     private Long nextOfKinContact;
     private Double flyingHours;
 
-    public Student(String firstName, String lastName, String name, String email, String cell, String address, LocalDate startDate, Instructor instructor, Course course, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, Aircraft aircraft, List<Rating> ratings, Set<Sponsor> sponsors, String nextOfKin, Long nextOfKinContact, Double flyingHours) {
-        super(firstName, lastName, name, email, cell, address);
+    public Student(String firstName, String lastName, String email, String cell, String address, LocalDate startDate, Instructor instructor, Course course, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, Aircraft aircraft, List<Rating> ratings, Set<Sponsor> sponsors, String nextOfKin, Long nextOfKinContact, Double flyingHours) {
+        super(firstName, lastName, email, cell, address);
         this.startDate = startDate;
         this.instructor = instructor;
         this.course = course;

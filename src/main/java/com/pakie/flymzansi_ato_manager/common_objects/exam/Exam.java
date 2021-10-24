@@ -13,12 +13,14 @@ public class Exam extends CommonObject {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     private Subject subject;
+    private Double duration;
     private Double passMark;
     private Double price;
 
-    public Exam(String title, String description, String details, Subject subject, Double passMark, Double price) {
+    public Exam(String title, String description, String details, Subject subject, Double duration, Double passMark, Double price) {
         super(title, description, details);
         this.subject = subject;
+        this.duration = duration;
         this.passMark = passMark;
         this.price = price;
     }
@@ -43,6 +45,14 @@ public class Exam extends CommonObject {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public Double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Double duration) {
+        this.duration = duration;
     }
 
     public Double getPassMark() {

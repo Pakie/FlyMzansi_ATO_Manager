@@ -4,6 +4,7 @@ import com.pakie.flymzansi_ato_manager.common_objects.department.Department;
 import com.pakie.flymzansi_ato_manager.common_objects.employment_position.EmploymentPosition;
 import com.pakie.flymzansi_ato_manager.common_objects.employment_type.EmploymentType;
 import com.pakie.flymzansi_ato_manager.person.Person;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class Employee extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
     private Double salary;
     private Long taxNumber;
@@ -30,7 +32,7 @@ public class Employee extends Person {
     private EmploymentPosition employmentPosition;
 
     public Employee(String firstName, String lastName, String name, String email, String cell, String address, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, EmploymentPosition employmentPosition) {
-        super(firstName, lastName, name, email, cell, address);
+        super(firstName, lastName, email, cell, address);
         this.startDate = startDate;
         this.salary = salary;
         this.taxNumber = taxNumber;

@@ -22,10 +22,10 @@
         <table class="table datatable-button-init-add_mechanic">
             <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>ID</th>
+                <th>Name</th>
                 <th>Email</th>
-                <th>Course</th>
+                <th>Licenses</th>
                 <th>Status</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -33,10 +33,10 @@
             <tbody>
 
             <tr th:each="mechanic: ${mechanics}">
-                <td th:text="${mechanic.firstName}"></td>
-                <td th:text="${mechanic.lastName}"><a href="#"></a></td>
-                <td th:text="${mechanic.email}">Place Holder</td>
-                <td th:text="${mechanic.license}">Course</td>
+                <td th:text="${mechanic.id}"></td>
+                <td th:text="${mechanic.firstName + ' ' + mechanic.lastName}"></td>
+                <td th:text="${mechanic.email}"></td>
+                <td th:text="${mechanic.license.title}"></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">
                     <div class="list-icons">

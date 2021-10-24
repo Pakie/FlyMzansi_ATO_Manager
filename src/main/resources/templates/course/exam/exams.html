@@ -22,9 +22,9 @@
         <table class="table datatable-button-init-add_exam">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Exam</th>
-                <th>Course</th>
+                <th>Subject</th>
+                <th>Duration</th>
                 <th>Pass Mark</th>
                 <th>Price</th>
                 <th class="text-center">Actions</th>
@@ -33,11 +33,11 @@
             <tbody>
 
             <tr th:each="exam: ${exams}">
-                <td th:text="${exam.id}"></td>
-                <td th:text="${exam.title}"><a href="#"></a></td>
-                <td th:text="${exam.subject}">Place Holder</td>
-                <td th:text="${exam.passMark}">Course</td>
-                <td th:text="${exam.price}">Course</td>
+                <td th:text="${exam.title}"></td>
+                <td th:text="${exam.subject.title}"></td>
+                <td th:text="${exam.duration}"></td>
+                <td th:text="${exam.passMark}"></td>
+                <td th:text="${exam.price}"></td>
                 <td class="text-center">
                     <div class="list-icons">
                         <div class="dropdown">

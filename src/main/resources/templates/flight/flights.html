@@ -8,10 +8,9 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <!--Content of the page-->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">All Flights</h5>
+            <h5 class="card-title">All Licenses</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -27,8 +26,7 @@
                 <th>ID</th>
                 <th>Flight</th>
                 <th>Description</th>
-                <th>Aircraft</th>
-                <th>Price Per Hour</th>
+                <th>Price</th>
                 <th class="text-center">Actions</th>
             </tr>
             </thead>
@@ -36,7 +34,7 @@
 
             <tr th:each="flight: ${flights}">
                 <td th:text="${flight.id}"></td>
-                <td th:text="${flight.title}"><a href="#"></a></td>
+                <td th:text="${flight.title}"></td>
                 <td th:text="${flight.description}"></td>
                 <td th:text="${flight.price}"></td>
                 <td class="text-center">

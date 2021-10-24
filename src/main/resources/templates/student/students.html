@@ -35,9 +35,9 @@
 
                 <tr th:each="student: ${students}">
                     <td th:text="${student.id}"></td>
-                    <td th:text="${student.name}"><a href="#"></a></td>
-                    <td th:text="${student.email}">Place Holder</td>
-                    <td th:text="${student.course}">Course</td>
+                    <td th:text="${student.firstName + ' ' + student.lastName}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td th:text="${student.course}"></td>
                     <td><span class="badge badge-success">Active</span></td>
                     <td class="text-center">
                         <div class="list-icons">

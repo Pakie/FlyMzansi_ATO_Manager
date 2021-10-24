@@ -11,8 +11,8 @@ public class Customer extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Customer(String firstName, String lastName, String name, String email, String cell, String address, Long id) {
-        super(firstName, lastName, name, email, cell, address);
+    public Customer(String firstName, String lastName, String email, String cell, String address, Long id) {
+        super(firstName, lastName, email, cell, address);
         this.id = id;
     }
 

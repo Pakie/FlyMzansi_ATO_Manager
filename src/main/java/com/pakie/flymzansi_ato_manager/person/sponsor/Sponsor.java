@@ -19,8 +19,8 @@ public class Sponsor extends Person {
     @ManyToMany(mappedBy = "sponsors")
     List<Student> students;
 
-    public Sponsor(String firstName, String lastName, String name, String email, String cell, String address, String type, Company company, List<Student> students) {
-        super(firstName, lastName, name, email, cell, address);
+    public Sponsor(String firstName, String lastName, String email, String cell, String address, String type, Company company, List<Student> students) {
+        super(firstName, lastName, email, cell, address);
         this.type = type;
         this.company = company;
         this.students = students;

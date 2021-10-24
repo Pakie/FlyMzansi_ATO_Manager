@@ -22,8 +22,8 @@
         <table class="table datatable-button-init-add_pilot">
             <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>ID</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Hours</th>
                 <th>Status</th>
@@ -33,10 +33,10 @@
             <tbody>
 
             <tr th:each="pilot: ${pilots}">
-                <td th:text="${pilot.firstName}"></td>
-                <td th:text="${pilot.lastName}"><a href="#"></a></td>
-                <td th:text="${pilot.email}">Place Holder</td>
-                <td th:text="${pilot.flyingHours}">Hours</td>
+                <td th:text="${pilot.id}"></td>
+                <td th:text="${pilot.firstName + ' ' + pilot.lastName}"></td>
+                <td th:text="${pilot.email}"></td>
+                <td th:text="${pilot.flyingHours}"></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">
                     <div class="list-icons">

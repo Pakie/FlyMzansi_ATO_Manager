@@ -2,6 +2,7 @@ package com.pakie.flymzansi_ato_manager.person.mechanic;
 
 import com.pakie.flymzansi_ato_manager.common_objects.license.License;
 import com.pakie.flymzansi_ato_manager.person.Person;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,11 +16,13 @@ public class Mechanic extends Person {
     private Long id;
     @OneToOne(fetch = FetchType.EAGER)
     private License license;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate licenseExpiryDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate medicalExpiryDate;
 
-    public Mechanic(String firstName, String lastName, String name, String email, String cell, String address, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate) {
-        super(firstName, lastName, name, email, cell, address);
+    public Mechanic(String firstName, String lastName, String email, String cell, String address, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate) {
+        super(firstName, lastName, email, cell, address);
         this.license = license;
         this.licenseExpiryDate = licenseExpiryDate;
         this.medicalExpiryDate = medicalExpiryDate;

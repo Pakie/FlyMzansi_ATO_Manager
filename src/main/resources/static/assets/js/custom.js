@@ -129,7 +129,7 @@ var DatatableButtons = function() {
                     text: 'Add New',
                     className: 'btn bg-teal-400',
                     action: function(e, dt, node, config) {
-                       window.location.href = "employees/instructors/add-instructor"
+                       window.location.href = "instructors/add-instructor"
                     }
                 }
             ]
@@ -362,6 +362,19 @@ var DatatableButtons = function() {
                 }
             ]
         });
+
+        $('.datatable-button-init-add_license').DataTable({
+            buttons: [
+                {
+                    text: 'Add New',
+                    className: 'btn bg-teal-400',
+                    action: function(e, dt, node, config) {
+                        window.location.href = "licenses/add-license"
+                    }
+                }
+            ]
+        });
+
 
         // Buttons collection
         $('.datatable-button-init-collection').DataTable({

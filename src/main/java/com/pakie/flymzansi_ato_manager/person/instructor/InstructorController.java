@@ -53,7 +53,7 @@ public class InstructorController {
     public String addInstructor(Model model){
         Instructor instructor = new Instructor();
         model.addAttribute("instructor", instructor);
-        model.addAttribute("employees", employeeService.getAllEmployees());
+        //model.addAttribute("employees", employeeService.getAllEmployees());
         model.addAttribute("aircrafts", aircraftService.getAllAircrafts());
         model.addAttribute("ratings", ratingService.getAllRatings());
         model.addAttribute("licenses", licenseService.getAllLicenses());
@@ -67,15 +67,16 @@ public class InstructorController {
     @PostMapping("/saveInstructor")
     public String saveInstructor(@ModelAttribute("instructor") Instructor instructor){
         instructorService.saveInstructor(instructor);
-        return "redirect:/instructors";
+        return "redirect:/employees/instructors";
     }
     @GetMapping("/employees/instructors/update-instructor/{id}")
     public String updateInstructor(@PathVariable(value = "id") Long id, Model model){
         Instructor instructor = instructorService.getInstructorById(id);
         model.addAttribute("instructor", instructor);
-        model.addAttribute("employees", employeeService.getAllEmployees());
+        //model.addAttribute("employees", employeeService.getAllEmployees());
         model.addAttribute("aircrafts", aircraftService.getAllAircrafts());
         model.addAttribute("licenses", licenseService.getAllLicenses());
+        model.addAttribute("ratings", ratingService.getAllRatings());
         model.addAttribute("departments", departmentService.getAllDepartments());
         model.addAttribute("employmentPositions", employmentPositionService.getAllEmploymentPositions());
         model.addAttribute("employmentTypes", employmentTypeService.getAllEmploymentTypes());
@@ -85,6 +86,6 @@ public class InstructorController {
     @GetMapping("/employees/instructors/delete-instructor/{id}")
     public String deleteInstructor(@PathVariable(value = "id") Long id, Model model){
         this.instructorService.deleteInstructorById(id);
-        return "redirect:/instructors";
+        return "redirect:/employees/instructors";
     }
 }

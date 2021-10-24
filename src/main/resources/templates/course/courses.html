@@ -25,7 +25,6 @@
                 <th>ID</th>
                 <th>Course</th>
                 <th>Description</th>
-                <th>Status</th>
                 <th class="text-center">Actions</th>
             </tr>
             </thead>
@@ -34,9 +33,7 @@
             <tr th:each="course: ${courses}">
                 <td th:text="${course.id}"></td>
                 <td th:text="${course.title}"></td>
-                <td th:text="${course.description}"><a href="#"></a></td>
-                <td>Place Holder</td>
-                <td><span class="badge badge-success">Active</span></td>
+                <td th:text="${course.description}"></td>
                 <td class="text-center">
                     <div class="list-icons">
                         <div class="dropdown">

@@ -34,9 +34,13 @@
 
             <tr th:each="instructor: ${instructors}">
                 <td th:text="${instructor.id}"></td>
-                <td th:text="${instructor.name}"><a href="#"></a></td>
-                <td th:text="${instructor.email}">Place Holder</td>
-                <td th:text="${instructor.ratings}">Course</td>
+                <td th:text="${instructor.firstName + ' ' + instructor.lastName}"></td>
+                <td th:text="${instructor.email}"></td>
+                <!--<td th:each="rating: ${instructor.ratings}">
+                    <th:block th:text="${rating.title}" />
+                </td>-->
+                <td><a href="#" data-toggle="modal" data-target="#exampleModal">View Ratings</a></td>
+
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">
                     <div class="list-icons">
@@ -59,6 +63,44 @@
         </table>
     </div>
     <!-- /whole row as a control -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Instructor's ratings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Rating ID</th>
+                            <th>Ratings</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="instructor: ${instructors}">
+                            <tr th:each="rating: ${instructor.ratings}">
+                                <td th:text="${rating.id}"></td>
+                                <td th:text="${rating.title}"></td>
+                                <td th:text="${rating.description}"></td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 </body>

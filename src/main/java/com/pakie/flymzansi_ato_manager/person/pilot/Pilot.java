@@ -3,6 +3,7 @@ package com.pakie.flymzansi_ato_manager.person.pilot;
 import com.pakie.flymzansi_ato_manager.common_objects.license.License;
 import com.pakie.flymzansi_ato_manager.common_objects.rating.Rating;
 import com.pakie.flymzansi_ato_manager.person.Person;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +18,9 @@ public class Pilot extends Person {
     private Double flyingHours;
     @ManyToOne(fetch = FetchType.EAGER)
     private License license;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date licenseExpiryDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date medicalExpiryDate;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "pilots_ratings",
@@ -29,8 +32,8 @@ public class Pilot extends Person {
     )
     List<Rating> ratings;
 
-    public Pilot(String firstName, String lastName, String name, String email, String cell, String address, Double flyingHours, License license, Date licenseExpiryDate, Date medicalExpiryDate, List<Rating> ratings) {
-        super(firstName, lastName, name, email, cell, address);
+    public Pilot(String firstName, String lastName, String email, String cell, String address, Double flyingHours, License license, Date licenseExpiryDate, Date medicalExpiryDate, List<Rating> ratings) {
+        super(firstName, lastName, email, cell, address);
         this.flyingHours = flyingHours;
         this.license = license;
         this.licenseExpiryDate = licenseExpiryDate;

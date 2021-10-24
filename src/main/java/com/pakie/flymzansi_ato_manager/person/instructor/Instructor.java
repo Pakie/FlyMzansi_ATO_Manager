@@ -9,6 +9,7 @@ import com.pakie.flymzansi_ato_manager.common_objects.license.License;
 import com.pakie.flymzansi_ato_manager.common_objects.rating.Rating;
 import com.pakie.flymzansi_ato_manager.person.employee.Employee;
 import com.pakie.flymzansi_ato_manager.person.student.Student;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -27,7 +28,9 @@ public class Instructor extends Employee {
     @ManyToOne(fetch = FetchType.EAGER)
     private License license;
     private String licenseNumber;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate licenseExpiryDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate medicalExpiryDate;
     @OneToMany(mappedBy = "instructor")
     List<GroundSchool> groundSchools;

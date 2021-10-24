@@ -9,16 +9,13 @@ public class Person {
     private Long id;
     private String firstName;
     private String lastName;
-    @Transient
-    private String name = firstName + " " + lastName;
     private String email;
     private String cell;
     private String address;
 
-    public Person(String firstName, String lastName, String name, String email, String cell, String address) {
+    public Person(String firstName, String lastName, String email, String cell, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.name = name;
         this.email = email;
         this.cell = cell;
         this.address = address;
@@ -52,14 +49,6 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -90,7 +79,6 @@ public class Person {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", cell='" + cell + '\'' +
                 ", address='" + address + '\'' +
