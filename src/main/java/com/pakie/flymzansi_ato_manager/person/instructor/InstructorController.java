@@ -2,7 +2,7 @@ package com.pakie.flymzansi_ato_manager.person.instructor;
 
 import com.pakie.flymzansi_ato_manager.common_objects.aircraft.AircraftService;
 import com.pakie.flymzansi_ato_manager.common_objects.department.DepartmentService;
-import com.pakie.flymzansi_ato_manager.common_objects.employment_position.EmploymentPositionService;
+import com.pakie.flymzansi_ato_manager.common_objects.position.PositionService;
 import com.pakie.flymzansi_ato_manager.common_objects.employment_type.EmploymentTypeService;
 import com.pakie.flymzansi_ato_manager.common_objects.license.LicenseService;
 import com.pakie.flymzansi_ato_manager.common_objects.rating.RatingService;
@@ -36,7 +36,7 @@ public class InstructorController {
     DepartmentService departmentService;
 
     @Autowired
-    EmploymentPositionService employmentPositionService;
+    PositionService employmentPositionService;
 
     @Autowired
     EmploymentTypeService employmentTypeService;
@@ -53,12 +53,12 @@ public class InstructorController {
     public String addInstructor(Model model){
         Instructor instructor = new Instructor();
         model.addAttribute("instructor", instructor);
-        //model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("employees", employeeService.getAllEmployees());
         model.addAttribute("aircrafts", aircraftService.getAllAircrafts());
         model.addAttribute("ratings", ratingService.getAllRatings());
         model.addAttribute("licenses", licenseService.getAllLicenses());
         model.addAttribute("departments", departmentService.getAllDepartments());
-        model.addAttribute("employmentPositions", employmentPositionService.getAllEmploymentPositions());
+        model.addAttribute("positions", employmentPositionService.getAllPositions());
         model.addAttribute("employmentTypes", employmentTypeService.getAllEmploymentTypes());
 
         return "instructor/add_instructor";
@@ -73,12 +73,12 @@ public class InstructorController {
     public String updateInstructor(@PathVariable(value = "id") Long id, Model model){
         Instructor instructor = instructorService.getInstructorById(id);
         model.addAttribute("instructor", instructor);
-        //model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("employees", employeeService.getAllEmployees());
         model.addAttribute("aircrafts", aircraftService.getAllAircrafts());
         model.addAttribute("licenses", licenseService.getAllLicenses());
         model.addAttribute("ratings", ratingService.getAllRatings());
         model.addAttribute("departments", departmentService.getAllDepartments());
-        model.addAttribute("employmentPositions", employmentPositionService.getAllEmploymentPositions());
+        model.addAttribute("positions", employmentPositionService.getAllPositions());
         model.addAttribute("employmentTypes", employmentTypeService.getAllEmploymentTypes());
 
         return "instructor/update_instructor";

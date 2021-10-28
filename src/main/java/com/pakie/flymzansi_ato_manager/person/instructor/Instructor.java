@@ -2,7 +2,7 @@ package com.pakie.flymzansi_ato_manager.person.instructor;
 
 import com.pakie.flymzansi_ato_manager.common_objects.aircraft.Aircraft;
 import com.pakie.flymzansi_ato_manager.common_objects.department.Department;
-import com.pakie.flymzansi_ato_manager.common_objects.employment_position.EmploymentPosition;
+import com.pakie.flymzansi_ato_manager.common_objects.position.Position;
 import com.pakie.flymzansi_ato_manager.common_objects.employment_type.EmploymentType;
 import com.pakie.flymzansi_ato_manager.common_objects.ground_school.GroundSchool;
 import com.pakie.flymzansi_ato_manager.common_objects.license.License;
@@ -13,11 +13,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "instructor")
 public class Instructor extends Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,8 +56,8 @@ public class Instructor extends Employee {
     )
     List<Rating> ratings;
 
-    public Instructor(String firstName, String lastName, String name, String email, String cell, String address, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, EmploymentPosition employmentPosition, String nextOfKin, Long nextOfKinContact, Double flyingHours, License license, String licenseNumber, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, List<GroundSchool> groundSchools, List<Aircraft> aircrafts, List<Student> students, List<Rating> ratings) {
-        super(firstName, lastName, name, email, cell, address, startDate, salary, taxNumber, department, employmentType, employmentPosition);
+    public Instructor(String firstName, String lastName, String email, String cell, String address, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position employmentPosition, String nextOfKin, Long nextOfKinContact, Double flyingHours, License license, String licenseNumber, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, List<GroundSchool> groundSchools, List<Aircraft> aircrafts, List<Student> students, List<Rating> ratings) {
+        super(firstName, lastName, email, cell, address, startDate, salary, taxNumber, department, employmentType, employmentPosition);
         this.nextOfKin = nextOfKin;
         this.nextOfKinContact = nextOfKinContact;
         this.flyingHours = flyingHours;

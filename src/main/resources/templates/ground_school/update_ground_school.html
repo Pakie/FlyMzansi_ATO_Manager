@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -64,7 +64,7 @@
                     <div class="col-lg-9">
                         <select th:field="*{instructor}" data-placeholder="Select an instructor" class="form-control select-clear" data-fouc>
                             <th:block th:each="instructor: ${instructors}">
-                                <option th:value="${instructor.id}" th:text="${instructor.name}"></option>
+                                <option th:value="${instructor.id}" th:text="${instructor.firstName + ' ' + instructor.lastName}"></option>
                             </th:block>
                         </select>
                     </div>

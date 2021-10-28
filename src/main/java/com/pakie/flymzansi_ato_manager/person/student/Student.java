@@ -21,6 +21,7 @@ public class Student extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
     @ManyToOne
     @JoinColumn(name = "instructor_id")

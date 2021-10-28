@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body">
-            <form action="#" th:action="@{/saveEmploymentPosition}" th:object="${employmentPosition}" method="post">
+            <form action="#" th:action="@{/savePosition}" th:object="${position}" method="post">
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Title:</label>

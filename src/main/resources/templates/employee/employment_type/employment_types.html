@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -25,8 +25,6 @@
                 <th>ID</th>
                 <th>Employment Type</th>
                 <th>Description</th>
-                <th>Details</th>
-                <th>Status</th>
                 <th class="text-center">Actions</th>
             </tr>
             </thead>
@@ -34,10 +32,8 @@
 
             <tr th:each="empType: ${employmentTypes}">
                 <td th:text="${empType.id}"></td>
-                <td th:text="${empType.title}"><a href="#"></a></td>
-                <td th:text="${empType.description}">Place Holder</td>
-                <td th:text="${empType.details}">Course</td>
-                <td><span class="badge badge-success">Active</span></td>
+                <td th:text="${empType.title}"></td>
+                <td th:text="${empType.description}"></td>
                 <td class="text-center">
                     <div class="list-icons">
                         <div class="dropdown">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Position</th>
+                <th>Department</th>
+                <th>Job Position</th>
                 <th>Employment</th>
                 <th>Status</th>
                 <th class="text-center">Actions</th>
@@ -35,9 +36,10 @@
 
             <tr th:each="employee: ${employees}">
                 <td th:text="${employee.id}"></td>
-                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.firstName + ' ' + employee.lastName}"></td>
                 <td th:text="${employee.email}"></td>
-                <td th:text="${employee.employmentPosition.title}"></td>
+                <td th:text="${employee.department.title}"></td>
+                <td th:text="${employee.position.title}"></td>
                 <td th:text="${employee.employmentType.title}"></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">
@@ -50,7 +52,7 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
                                 <a th:href="@{/employees/update-employee/{id}(id=${employee.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
-                                <a th:href="@{/employees/update-employee/{id}(id=${employee.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
+                                <a th:href="@{/employees/delete-employee/{id}(id=${employee.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
                             </div>
                         </div>
                     </div>

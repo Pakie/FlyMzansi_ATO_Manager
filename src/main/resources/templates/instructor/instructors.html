@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -36,9 +36,6 @@
                 <td th:text="${instructor.id}"></td>
                 <td th:text="${instructor.firstName + ' ' + instructor.lastName}"></td>
                 <td th:text="${instructor.email}"></td>
-                <!--<td th:each="rating: ${instructor.ratings}">
-                    <th:block th:text="${rating.title}" />
-                </td>-->
                 <td><a href="#" data-toggle="modal" data-target="#exampleModal">View Ratings</a></td>
 
                 <td><span class="badge badge-success">Active</span></td>
@@ -96,7 +93,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">Address:</label>
                     <div class="col-lg-5">
-                        <input type="email" th:field="*{address}" class="form-control" placeholder="Address" name="address">
+                        <input type="text" th:field="*{address}" class="form-control" placeholder="Address" name="address">
                     </div>
                 </div>
 

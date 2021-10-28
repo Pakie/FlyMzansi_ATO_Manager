@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Course</th>
+                <th>Comany</th>
                 <th>Status</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -34,9 +34,9 @@
 
             <tr th:each="sponsor: ${sponsors}">
                 <td th:text="${sponsor.id}"></td>
-                <td th:text="${sponsor.name}"></td>
+                <td th:text="${sponsor.firstName + ' ' + sponsor.lastName}"></td>
                 <td th:text="${sponsor.email}"></td>
-                <td th:text="${sponsor.company}"></td>
+                <td th:text="${sponsor.company.title}"></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">
                     <div class="list-icons">
@@ -47,8 +47,8 @@
 
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> View</a>
-                                <a th:href="@{/sponsors/update-sposor/{id}(id=${sponsor.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
-                                <a th:href="@{/sponsors/update-sponsor/{id}(id=${sponsor.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
+                                <a th:href="@{/sponsors/update-sponsor/{id}(id=${sponsor.id})}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                <a th:href="@{/sponsors/delete-sponsor/{id}(id=${sponsor.id})}" class="dropdown-item"><i class="icon-bin"></i> Delete</a>
                             </div>
                         </div>
                     </div>

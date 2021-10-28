@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +54,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">Start Date:</label>
                     <div class="col-lg-5">
-                        <input th:text="*{startDate}" class="form-control" type="date" name="startDate">
+                        <input th:field="*{startDate}" class="form-control" type="date" name="startDate">
                     </div>
                 </div>
 
@@ -91,10 +91,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Employment Postion:</label>
+                    <label class="col-lg-2 col-form-label">Employment Position:</label>
                     <div class="col-lg-5">
-                        <select th:field="*{employmentPosition}" class="form-control select-clear" data-fouc>
-                            <th:block th:each="empPosition: ${employmentPositions}">
+                        <select th:field="*{position}" class="form-control select-clear" data-fouc>
+                            <th:block th:each="empPosition: ${positions}">
                                 <option th:value="${empPosition.id}" th:text="${empPosition.title}"></option>
                             </th:block>
                         </select>

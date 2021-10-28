@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -27,6 +27,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Course</th>
+                    <th>Instructor</th>
                     <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -37,7 +38,8 @@
                     <td th:text="${student.id}"></td>
                     <td th:text="${student.firstName + ' ' + student.lastName}"></td>
                     <td th:text="${student.email}"></td>
-                    <td th:text="${student.course}"></td>
+                    <td th:text="${student.course.title}"></td>
+                    <td th:text="${student.instructor.firstName + ' ' + student.instructor.lastName}"></td>
                     <td><span class="badge badge-success">Active</span></td>
                     <td class="text-center">
                         <div class="list-icons">

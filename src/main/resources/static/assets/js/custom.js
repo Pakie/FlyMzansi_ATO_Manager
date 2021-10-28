@@ -177,7 +177,7 @@ var DatatableButtons = function() {
                     text: 'Add New',
                     className: 'btn bg-teal-400',
                     action: function(e, dt, node, config) {
-                        window.location.href = "aircrafts/aircraft-types/add-aircraft-type"
+                        window.location.href = "aircraft-types/add-aircraft-type"
                     }
                 }
             ]
@@ -370,6 +370,18 @@ var DatatableButtons = function() {
                     className: 'btn bg-teal-400',
                     action: function(e, dt, node, config) {
                         window.location.href = "licenses/add-license"
+                    }
+                }
+            ]
+        });
+
+        $('.datatable-button-init-add_company').DataTable({
+            buttons: [
+                {
+                    text: 'Add New',
+                    className: 'btn bg-teal-400',
+                    action: function(e, dt, node, config) {
+                        window.location.href = "companies/add-company"
                     }
                 }
             ]

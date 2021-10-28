@@ -1,7 +1,7 @@
 package com.pakie.flymzansi_ato_manager.person.employee;
 
 import com.pakie.flymzansi_ato_manager.common_objects.department.DepartmentService;
-import com.pakie.flymzansi_ato_manager.common_objects.employment_position.EmploymentPositionService;
+import com.pakie.flymzansi_ato_manager.common_objects.position.PositionService;
 import com.pakie.flymzansi_ato_manager.common_objects.employment_type.EmploymentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class EmployeeController {
     EmploymentTypeService employmentTypeService;
 
     @Autowired
-    EmploymentPositionService employmentPositionService;
+    PositionService positionService;
 
     @Autowired
     DepartmentService departmentService;
@@ -38,7 +38,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         model.addAttribute("employmentTypes", employmentTypeService.getAllEmploymentTypes());
-        model.addAttribute("employmentPositions", employmentPositionService.getAllEmploymentPositions());
+        model.addAttribute("positions", positionService.getAllPositions());
         model.addAttribute("departments", departmentService.getAllDepartments());
 
         return "employee/add_employee";
@@ -54,7 +54,7 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
         model.addAttribute("employmentTypes", employmentTypeService.getAllEmploymentTypes());
-        model.addAttribute("employmentPositions", employmentPositionService.getAllEmploymentPositions());
+        model.addAttribute("positions", positionService.getAllPositions());
         model.addAttribute("departments", departmentService.getAllDepartments());
 
         return "employee/update_employee";

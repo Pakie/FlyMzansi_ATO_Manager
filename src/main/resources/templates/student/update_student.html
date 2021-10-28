@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/index"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/index}"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -117,7 +117,7 @@
                     <div class="col-lg-5">
                         <select th:field="*{instructor}" data-placeholder="Select an instructor" class="form-control select-clear" data-fouc>
                             <th:block th:each="instructor: ${instructors}">
-                                <option th:value="${instructor.id}" th:text="${instructor.name}"></option>
+                                <option th:value="${instructor.id}" th:text="${instructor.firstName + ' ' + instructor.lastName}"></option>
                             </th:block>
                         </select>
                     </div>
@@ -139,7 +139,7 @@
                     <div class="col-lg-5">
                         <select th:field="*{sponsors}" data-placeholder="Select sponsor(s)" class="form-control multiselect-full-featured" multiple="multiple" data-fouc>
                             <th:block th:each="sponsor: ${sponsors}">
-                                <option th:value="${sponsor.id}" th:text="${sponsor.name}"></option>
+                                <option th:value="${sponsor.id}" th:text="${sponsor.firstName + ' ' + sponsor.lastName}"></option>
                             </th:block>
                         </select>
                     </div>
