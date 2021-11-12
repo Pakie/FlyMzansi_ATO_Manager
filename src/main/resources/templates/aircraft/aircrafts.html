@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All Aircraft</title>
+    <!-- script src="../../../../assets/js/aircraft.js"></script -->
 </head>
 <body>
 <div layout:fragment="content">
@@ -23,7 +24,7 @@
         <table class="table datatable-button-init-add_aircraft">
             <thead>
             <tr>
-                <th>ID</th>
+                <th></th>
                 <th>Name</th>
                 <th>Registration</th>
                 <th>Colour</th>
@@ -34,7 +35,9 @@
             <tbody>
 
             <tr th:each="aircraft: ${aircrafts}">
-                <td th:text="${aircraft.id}"></td>
+                <td><a id="photoButton" th:href="@{'/global_assets/images/placeholders/placeholder.jpg'}">
+                    <img th:src="@{'/global_assets/images/placeholders/placeholder.jpg'}" width="40" height="40"></a>
+                </td>
                 <td th:text="${aircraft.title}"><a href="#"></a></td>
                 <td th:text="${aircraft.registration}">Place Holder</td>
                 <td th:text="${aircraft.colour}">Course</td>
@@ -56,10 +59,31 @@
                 </td>
             </tr>
 
+
+
             </tbody>
         </table>
     </div>
     <!-- /whole row as a control -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="photoModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="employeePhoto" src="" width="90%" height="90%">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 </body>

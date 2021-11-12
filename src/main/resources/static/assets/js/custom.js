@@ -17,6 +17,48 @@
 // Setup module
 // ------------------------------
 
+$('.table #photoButton').on('click',function(event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    $('#photoModal #employeePhoto').attr('src', href);
+    $('#photoModal').modal();
+});
+
+//Email Matcher
+$('document').ready(function () {
+    var email = document.getElementById("email")
+    var confirmEmail = document.getElementById("confirmEmail");
+
+    function validateEmail(){
+        if (email.value != confirmEmail.value){
+            confirmEmail.setCustomValidity("Emails don't match");
+        } else {
+            confirmEmail.setCustomValidity("");
+        }
+    }
+
+    email.onchange = validateEmail;
+    confirmEmail.onkeyup = validateEmail;
+})
+
+//Password Matcher
+
+$('document').ready(function () {
+    var password = document.getElementById("password")
+    var confirmPassword = document.getElementById("confirmPassword");
+
+    function validatePassword(){
+        if (password.value != confirmPassword.value){
+            confirmPassword.setCustomValidity("Passwords don't match");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirmPassword.onkeyup = validatePassword;
+})
+
 var DatatableButtons = function() {
 
 

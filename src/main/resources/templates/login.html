@@ -1,94 +1,129 @@
-{% include "head.html" %}
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
 
-<body class="bg-slate-800">
-	<!-- Page content -->
-	<div class="page-content">
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="../../../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/layout.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
 
-		<!-- Main content -->
-		<div class="content-wrapper">
+	<!-- Core JS files -->
+	<script src="../../../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
 
-			<!-- Content area -->
-			<div class="content d-flex justify-content-center align-items-center">
+	<!-- Theme JS files -->
+	<script src="../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 
-				<!-- Login card -->
-				<form class="login-form" action="" method="post">
-                    {% csrf_token %}
+	<script src="assets/js/app.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/login.js"></script>
+	<!-- /theme JS files -->
 
-					<div class="card mb-0">
-						<div class="card-body">
-							<div class="text-center mb-3">
-								<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
-								<h5 class="mb-0">Login to your account</h5>
-								<span class="d-block text-muted">Your credentials</span>
+	</head>
+	<body class="bg-slate-800">
+		<!-- Page content -->
+		<div class="page-content">
 
-								{% for message in messages %}
-									<span class="form-text text-danger"><i class="icon-cancel-circle2 mr-2"></i> {{message}} </span>
-								{% endfor %}
+			<!-- Main content -->
+			<div class="content-wrapper">
 
-							</div>
+				<!-- Content area -->
+				<div class="content d-flex justify-content-center align-items-center">
 
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="text" class="form-control" name="username" placeholder="Username">
-								<div class="form-control-feedback">
-									<i class="icon-user text-muted"></i>
-								</div>
-							</div>
+					<!-- Login card -->
+					<form class="login-form" th:action="@{/login}" method="post">
 
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" class="form-control" name="password" placeholder="Password">
-								<div class="form-control-feedback">
-									<i class="icon-lock2 text-muted"></i>
-								</div>
-							</div>
-
-							<div class="form-group d-flex align-items-center">
-								<div class="form-check mb-0">
-									<label class="form-check-label">
-										<input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
-										Remember
-									</label>
-								</div>
-
-								<a href="{% url 'password_reset' %}" class="ml-auto">Forgot password?</a>
-							</div>
-
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
-							</div>
-
-							<div class="form-group text-center text-muted content-divider">
-								<span class="px-2">or sign in with</span>
-							</div>
-
-							<div class="form-group text-center">
-								<button type="button" class="btn btn-outline bg-indigo border-indigo text-indigo btn-icon rounded-round border-2"><i class="icon-facebook"></i></button>
-								<button type="button" class="btn btn-outline bg-pink-300 border-pink-300 text-pink-300 btn-icon rounded-round border-2 ml-2"><i class="icon-dribbble3"></i></button>
-								<button type="button" class="btn btn-outline bg-slate-600 border-slate-600 text-slate-600 btn-icon rounded-round border-2 ml-2"><i class="icon-github"></i></button>
-								<button type="button" class="btn btn-outline bg-info border-info text-info btn-icon rounded-round border-2 ml-2"><i class="icon-twitter"></i></button>
-							</div>
-
-							<div class="form-group text-center text-muted content-divider">
-								<span class="px-2">Don't have an account?</span>
-							</div>
-
-							<div class="form-group">
-								<a href="{% url 'register' %}" class="btn btn-light btn-block">Create Account</a>
-							</div>
-
-							<span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+						<!-- Error Message -->
+						<div th:if="${param.error}">
+							<div class="alert alert-danger">Incorrect Username or Password</div>
 						</div>
-					</div>
-				</form>
-				<!-- /login card -->
+
+						<!-- Logout message -->
+						<div th:if="${param.logout}">
+							<div class="alert alert-info">You have been logged out</div>
+						</div>
+
+						<div class="card mb-0">
+							<div class="card-body">
+								<div class="text-center mb-3">
+									<i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
+									<h5 class="mb-0">Login to your account</h5>
+									<span class="d-block text-muted">Your credentials</span>
+								</div>
+
+								<div class="form-group form-group-feedback form-group-feedback-left">
+									<input type="email" class="form-control" id="username" name="username" placeholder="Email">
+									<div class="form-control-feedback">
+										<i class="icon-user text-muted"></i>
+									</div>
+								</div>
+
+								<div class="form-group form-group-feedback form-group-feedback-left">
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+									<div class="form-control-feedback">
+										<i class="icon-lock2 text-muted"></i>
+									</div>
+								</div>
+
+								<div class="form-group d-flex align-items-center">
+									<div class="form-check mb-0">
+										<label class="form-check-label">
+											<input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+											Remember
+										</label>
+									</div>
+
+									<a href="#" class="ml-auto">Forgot password?</a>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
+								</div>
+
+								<div class="form-group text-center text-muted content-divider">
+									<span class="px-2">or sign in with</span>
+								</div>
+
+								<div class="form-group text-center">
+									<button type="button" class="btn btn-outline bg-indigo border-indigo text-indigo btn-icon rounded-round border-2"><i class="icon-facebook"></i></button>
+									<button type="button" class="btn btn-outline bg-pink-300 border-pink-300 text-pink-300 btn-icon rounded-round border-2 ml-2"><i class="icon-dribbble3"></i></button>
+									<button type="button" class="btn btn-outline bg-slate-600 border-slate-600 text-slate-600 btn-icon rounded-round border-2 ml-2"><i class="icon-github"></i></button>
+									<button type="button" class="btn btn-outline bg-info border-info text-info btn-icon rounded-round border-2 ml-2"><i class="icon-twitter"></i></button>
+								</div>
+
+								<div class="form-group text-center text-muted content-divider">
+									<span class="px-2">Don't have an account?</span>
+								</div>
+
+								<div class="form-group">
+									<a th:href="@{/registration}" class="btn btn-light btn-block">Create Account</a>
+								</div>
+
+								<span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+							</div>
+						</div>
+					</form>
+					<!-- /login card -->
+
+				</div>
+				<!-- /content area -->
 
 			</div>
-			<!-- /content area -->
+			<!-- /main content -->
 
 		</div>
-		<!-- /main content -->
-
-	</div>
-	<!-- /page content -->
-</body>
+		<!-- /page content -->
+	</body>
 
 
+</html>

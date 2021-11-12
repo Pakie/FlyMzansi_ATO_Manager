@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/bootstrap_limitless.min.css"  rel="stylesheet" type="text/css">
 	<link href="/assets/css/layout.min.css" rel="stylesheet" type="text/css">
 	<link href="/assets/css/components.min.css" rel="stylesheet" type="text/css">
 	<link href="/assets/css/colors.min.css" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 	<script src="../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
 	<script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
 	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/select2.min.js" ></script>
 	<script src="../../../../global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script src="../../../../global_assets/js/demo_pages/form_multiselect.js"></script>
 	<script src="../../../../global_assets/js/demo_pages/form_select2.js"></script>
@@ -65,6 +65,7 @@
 	<script src="../../../../global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
 	<script src="../../../../global_assets/js/demo_pages/extra_sweetalert.js"></script>
 	<script src="../../../../assets/js/custom.js"></script>
+	<script src="../../../../assets/js/aircraft.js"></script>
 	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="../../../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
 	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
@@ -368,10 +369,10 @@
 					</div>
 				</li>
 
-				<li class="nav-item dropdown dropdown-user">
+				<li class="nav-item dropdown dropdown-user" sec:authorize="isAuthenticated()">
 					<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-						<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
-						<span>Victoria</span>
+						<img th:src="@{'../../../../global_assets/images/pictures/' + ${#authentication.getPrincipal().getUsername()} + '.jpg'}" class="rounded-circle mr-2" height="34" alt="">
+						<span th:text="${#authentication.getPrincipal().getUsername()}">Guest</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
@@ -380,7 +381,7 @@
 						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
 						<div class="dropdown-divider"></div>
 						<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
-						<a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+						<a class="dropdown-item" th:href="@{/logout}"><i class="icon-switch2"></i>Logout</a>
 					</div>
 				</li>
 			</ul>

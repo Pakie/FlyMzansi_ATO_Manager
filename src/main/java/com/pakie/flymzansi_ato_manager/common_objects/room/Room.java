@@ -9,9 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "room")
 public class Room extends CommonObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private Integer seats;
     @ManyToOne(fetch = FetchType.EAGER)
     private Status status;
@@ -27,16 +25,6 @@ public class Room extends CommonObject {
 
     public Room() {
 
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Integer getSeats() {

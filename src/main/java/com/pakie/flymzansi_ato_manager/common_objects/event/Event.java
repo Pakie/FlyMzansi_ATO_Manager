@@ -10,9 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "event")
 public class Event extends CommonObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private Date startTime;
     private Date endTime;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -31,16 +29,6 @@ public class Event extends CommonObject {
 
     public Event() {
 
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Date getStartTime() {

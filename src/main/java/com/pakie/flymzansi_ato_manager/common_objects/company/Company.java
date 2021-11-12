@@ -7,9 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "company")
 public class Company extends CommonObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private String address;
 
     public Company(String title, String description, String details, String address) {
@@ -19,17 +17,6 @@ public class Company extends CommonObject {
 
     public Company() {
 
-    }
-
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAddress() {
