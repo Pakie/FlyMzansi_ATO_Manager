@@ -54,8 +54,8 @@ public class Instructor extends Employee {
     )
     List<Rating> ratings;
 
-    public Instructor(String firstName, String lastName, String email, String cell, String address, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position employmentPosition, String nextOfKin, Long nextOfKinContact, Double flyingHours, License license, String licenseNumber, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, List<GroundSchool> groundSchools, List<Aircraft> aircrafts, List<Student> students, List<Rating> ratings) {
-        super(firstName, lastName, email, cell, address, startDate, salary, taxNumber, department, employmentType, employmentPosition);
+    public Instructor(String firstName, String lastName, String email, String cell, String address, String image, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position employmentPosition, String nextOfKin, Long nextOfKinContact, Double flyingHours, License license, String licenseNumber, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, List<GroundSchool> groundSchools, List<Aircraft> aircrafts, List<Student> students, List<Rating> ratings) {
+        super(firstName, lastName, email, cell, address, image, startDate, salary, taxNumber, department, employmentType, employmentPosition);
         this.nextOfKin = nextOfKin;
         this.nextOfKinContact = nextOfKinContact;
         this.flyingHours = flyingHours;

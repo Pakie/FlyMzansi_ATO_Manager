@@ -17,6 +17,7 @@ public class Employee extends Person {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
     private Double salary;
+    @Column(unique = true, length = 50)
     private Long taxNumber;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -28,8 +29,8 @@ public class Employee extends Person {
     @ManyToOne(fetch = FetchType.EAGER)
     private Position position;
 
-    public Employee(String firstName, String lastName, String email, String cell, String address, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position position) {
-        super(firstName, lastName, email, cell, address);
+    public Employee(String firstName, String lastName, String email, String cell, String address, String image, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position position) {
+        super(firstName, lastName, email, cell, address, image);
         this.startDate = startDate;
         this.salary = salary;
         this.taxNumber = taxNumber;

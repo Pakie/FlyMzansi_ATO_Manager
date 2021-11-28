@@ -17,8 +17,9 @@ public class AircraftServiceImpl implements AircraftService{
     }
 
     @Override
-    public void saveAircraft(Aircraft aircraft) {
+    public Aircraft saveAircraft(Aircraft aircraft) {
         this.aircraftRepo.save(aircraft);
+        return aircraft;
     }
 
     @Override

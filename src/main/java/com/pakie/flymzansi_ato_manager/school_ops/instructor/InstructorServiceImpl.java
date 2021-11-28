@@ -17,8 +17,9 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    public void saveInstructor(Instructor instructor) {
+    public Instructor saveInstructor(Instructor instructor) {
         this.instructorRepo.save(instructor);
+        return instructor;
     }
 
     @Override

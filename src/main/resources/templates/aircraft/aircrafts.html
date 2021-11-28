@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>All Aircraft</title>
-    <!-- script src="../../../../assets/js/aircraft.js"></script -->
 </head>
 <body>
 <div layout:fragment="content">
@@ -24,7 +23,7 @@
         <table class="table datatable-button-init-add_aircraft">
             <thead>
             <tr>
-                <th></th>
+                <th>Picture</th>
                 <th>Name</th>
                 <th>Registration</th>
                 <th>Colour</th>
@@ -35,9 +34,17 @@
             <tbody>
 
             <tr th:each="aircraft: ${aircrafts}">
-                <td><a id="photoButton" th:href="@{'/global_assets/images/placeholders/placeholder.jpg'}">
-                    <img th:src="@{'/global_assets/images/placeholders/placeholder.jpg'}" width="40" height="40"></a>
+                <td>
+                    <span th:if="${aircraft.image == null || aircraft.image == ''}">
+                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/pane_placeholder2.png'}">
+                        <img th:src="@{'/global_assets/images/placeholders/plane_placeholder2.png'}" width="40" height="40"></a>
+                    </span>
+                    <span th:unless="${aircraft.image == null || aircraft.image == ''}">
+                        <a id="aircraftPhotoButton" th:href="@{${aircraft.imagePath}}">
+                        <img th:src="@{${aircraft.imagePath}}" width="40" height="40"/></a>
+                    </span>
                 </td>
+
                 <td th:text="${aircraft.title}"><a href="#"></a></td>
                 <td th:text="${aircraft.registration}">Place Holder</td>
                 <td th:text="${aircraft.colour}">Course</td>
@@ -58,8 +65,6 @@
                     </div>
                 </td>
             </tr>
-
-
 
             </tbody>
         </table>

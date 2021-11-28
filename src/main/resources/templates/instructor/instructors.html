@@ -22,7 +22,7 @@
         <table class="table datatable-button-init-add_instructor">
             <thead>
             <tr>
-                <th></th>
+                <th>    </th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Ratings</th>
@@ -31,10 +31,17 @@
             </tr>
             </thead>
             <tbody>
-
             <tr th:each="instructor: ${instructors}">
-                <td><a id="photoButton" th:href="@{'/global_assets/images/placeholders/' + ${instructor.id} + '.jpg'}">
-                    <img th:src="@{'/global_assets/images/placeholders/' + ${instructor.id} + '.jpg'}" width="40" height="40"></a>
+
+                <td>
+                    <span th:if="${instructor.image == null || instructor.image == ''}">
+                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/user.jpg'}">
+                        <img th:src="@{'/global_assets/images/placeholders/user.jpg'}" class="rounded-circle mr-2" width="40" height="40"></a>
+                    </span>
+                    <span th:unless="${instructor.image == null || instructor.image == ''}">
+                        <a id="aircraftPhotoButton" th:href="@{${instructor.imagePath}}">
+                        <img th:src="@{${instructor.imagePath}}" class="rounded-circle mr-2" width="40" height="40"/></a>
+                    </span>
                 </td>
                 <td th:text="${instructor.firstName + ' ' + instructor.lastName}"></td>
                 <td th:text="${instructor.email}"></td>

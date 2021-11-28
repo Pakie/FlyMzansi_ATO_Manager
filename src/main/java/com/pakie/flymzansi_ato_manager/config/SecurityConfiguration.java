@@ -12,6 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/libraries/**");
+        web.ignoring().antMatchers("/static/**", "/assets/**", "/global_assets/**", "/uploads/**");
     }
 
 
@@ -58,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/", true)
+                    //.defaultSuccessUrl("/", true)
                     .permitAll()
                 .and()
                 .logout()

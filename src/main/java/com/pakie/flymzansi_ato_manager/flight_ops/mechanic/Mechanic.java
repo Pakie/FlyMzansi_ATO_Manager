@@ -18,8 +18,8 @@ public class Mechanic extends Person {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate medicalExpiryDate;
 
-    public Mechanic(String firstName, String lastName, String email, String cell, String address, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate) {
-        super(firstName, lastName, email, cell, address);
+    public Mechanic(String firstName, String lastName, String email, String cell, String address, String image, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate) {
+        super(firstName, lastName, email, cell, address, image);
         this.license = license;
         this.licenseExpiryDate = licenseExpiryDate;
         this.medicalExpiryDate = medicalExpiryDate;

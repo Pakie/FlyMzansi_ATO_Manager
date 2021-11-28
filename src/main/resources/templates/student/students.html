@@ -35,8 +35,15 @@
                 <tbody>
 
                 <tr th:each="student: ${students}">
-                    <td><a id="photoButton" th:href="@{'/global_assets/images/placeholders/placeholder.jpg'}">
-                        <img th:src="@{'/global_assets/images/placeholders/placeholder.jpg'}" width="40" height="40"></a>
+                    <td>
+                    <span th:if="${student.image == null || student.image == ''}">
+                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/user.jpg'}">
+                        <img th:src="@{'/global_assets/images/placeholders/user.jpg'}" class="rounded-circle mr-2" width="40" height="40"></a>
+                    </span>
+                        <span th:unless="${student.image == null || student.image == ''}">
+                        <a id="aircraftPhotoButton" th:href="@{${student.imagePath}}">
+                        <img th:src="@{${student.imagePath}}" class="rounded-circle mr-2" width="40" height="40"/></a>
+                    </span>
                     </td>
                     <td th:text="${student.firstName + ' ' + student.lastName}"></td>
                     <td th:text="${student.email}"></td>

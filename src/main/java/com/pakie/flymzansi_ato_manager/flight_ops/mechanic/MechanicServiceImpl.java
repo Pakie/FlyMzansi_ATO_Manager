@@ -17,8 +17,9 @@ public class MechanicServiceImpl implements MechanicService {
     }
 
     @Override
-    public void saveMechanic(Mechanic mechanic) {
+    public Mechanic saveMechanic(Mechanic mechanic) {
         this.mechanicRepo.save(mechanic);
+        return mechanic;
     }
 
     @Override

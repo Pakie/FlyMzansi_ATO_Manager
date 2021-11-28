@@ -30,8 +30,8 @@ public class Pilot extends Person {
     )
     List<Rating> ratings;
 
-    public Pilot(String firstName, String lastName, String email, String cell, String address, Double flyingHours, License license, Date licenseExpiryDate, Date medicalExpiryDate, List<Rating> ratings) {
-        super(firstName, lastName, email, cell, address);
+    public Pilot(String firstName, String lastName, String email, String cell, String address, String image, Double flyingHours, License license, Date licenseExpiryDate, Date medicalExpiryDate, List<Rating> ratings) {
+        super(firstName, lastName, email, cell, address, image);
         this.flyingHours = flyingHours;
         this.license = license;
         this.licenseExpiryDate = licenseExpiryDate;

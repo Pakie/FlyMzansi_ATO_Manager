@@ -58,8 +58,8 @@ public class Student extends Person {
     private Long nextOfKinContact;
     private Double flyingHours;
 
-    public Student(String firstName, String lastName, String email, String cell, String address, LocalDate startDate, Instructor instructor, Course course, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, Aircraft aircraft, List<Rating> ratings, Set<Sponsor> sponsors, String nextOfKin, Long nextOfKinContact, Double flyingHours) {
-        super(firstName, lastName, email, cell, address);
+    public Student(String firstName, String lastName, String email, String cell, String address, String image, LocalDate startDate, Instructor instructor, Course course, License license, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, Aircraft aircraft, List<Rating> ratings, Set<Sponsor> sponsors, String nextOfKin, Long nextOfKinContact, Double flyingHours) {
+        super(firstName, lastName, email, cell, address, image);
         this.startDate = startDate;
         this.instructor = instructor;
         this.course = course;

@@ -22,7 +22,7 @@
         <table class="table datatable-button-init-add_pilot">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>  </th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Hours</th>
@@ -33,7 +33,16 @@
             <tbody>
 
             <tr th:each="pilot: ${pilots}">
-                <td th:text="${pilot.id}"></td>
+                <td>
+                    <span th:if="${pilot.image == null || pilot.image == ''}">
+                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/user.jpg'}">
+                        <img th:src="@{'/global_assets/images/placeholders/user.jpg'}" class="rounded-circle mr-2" width="40" height="40"></a>
+                    </span>
+                    <span th:unless="${pilot.image == null || pilot.image == ''}">
+                        <a id="aircraftPhotoButton" th:href="@{${pilot.imagePath}}">
+                        <img th:src="@{${pilot.imagePath}}" class="rounded-circle mr-2" width="40" height="40"/></a>
+                    </span>
+                </td>
                 <td th:text="${pilot.firstName + ' ' + pilot.lastName}"></td>
                 <td th:text="${pilot.email}"></td>
                 <td th:text="${pilot.flyingHours}"></td>

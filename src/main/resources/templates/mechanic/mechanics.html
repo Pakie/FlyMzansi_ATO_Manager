@@ -22,7 +22,7 @@
         <table class="table datatable-button-init-add_mechanic">
             <thead>
             <tr>
-                <th>ID</th>
+                <th></th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Licenses</th>
@@ -33,7 +33,16 @@
             <tbody>
 
             <tr th:each="mechanic: ${mechanics}">
-                <td th:text="${mechanic.id}"></td>
+                <td>
+                    <span th:if="${mechanic.image == null || mechanic.image == ''}">
+                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/user.jpg'}">
+                        <img th:src="@{'/global_assets/images/placeholders/user.jpg'}" class="rounded-circle mr-2" width="40" height="40"></a>
+                    </span>
+                    <span th:unless="${mechanic.image == null || mechanic.image == ''}">
+                        <a id="aircraftPhotoButton" th:href="@{${mechanic.imagePath}}">
+                        <img th:src="@{${mechanic.imagePath}}" class="rounded-circle mr-2" width="40" height="40"/></a>
+                    </span>
+                </td>
                 <td th:text="${mechanic.firstName + ' ' + mechanic.lastName}"></td>
                 <td th:text="${mechanic.email}"></td>
                 <td th:text="${mechanic.license.title}"></td>

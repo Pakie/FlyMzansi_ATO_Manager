@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body">
-            <form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post">
+            <form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post" enctype="multipart/form-data">
 
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">First Name:</label>
@@ -62,6 +62,13 @@
                     <label class="col-lg-2 col-form-label">Address:</label>
                     <div class="col-lg-5">
                         <input type="text" th:field="*{address}" class="form-control" placeholder="Address" name="address">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Picture:</label>
+                    <div class="col-lg-5">
+                        <input type="file" class="form-control-uniform-custom" placeholder="Profile Picture" id="fileImage" name="fileImage" accept="image/jpeg, image/png">
                     </div>
                 </div>
 

@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "customer")
 public class Customer extends Person {
 
-    public Customer(String firstName, String lastName, String email, String cell, String address) {
-        super(firstName, lastName, email, cell, address);
+    public Customer(String firstName, String lastName, String email, String cell, String address, String image) {
+        super(firstName, lastName, email, cell, address, image);
     }
 
     public Customer() {

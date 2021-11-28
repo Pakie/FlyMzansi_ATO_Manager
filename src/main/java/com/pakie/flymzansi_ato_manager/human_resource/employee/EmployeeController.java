@@ -6,10 +6,16 @@ import com.pakie.flymzansi_ato_manager.human_resource.employment_type.Employment
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @Controller
 public class EmployeeController {
@@ -45,10 +51,34 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee){
-        employeeService.saveEmployee(employee);
+    public String saveEmployee(@ModelAttribute("employee") Employee employee,
+                               @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        employee.setImage(fileName);
+        Employee savedEmployee = employeeService.saveEmployee(employee);
+
+        //The directory will be updated accordingly for production
+        String uploadDir = "./src/main/resources/static/global_assets/images/uploads/user/" + savedEmployee.getEmail();
+
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try {
+            InputStream inputStream = multipartFile.getInputStream();
+            Path filePath = uploadPath.resolve(fileName);
+            System.out.println(filePath.toString());
+
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Oops! Failed to upload file " + fileName);
+        }
+
         return "redirect:/employees";
     }
+
     @GetMapping("/employees/update-employee/{id}")
     public String updateEmployee(@PathVariable(value = "id") Long id, Model model){
         Employee employee = employeeService.getEmployeeById(id);

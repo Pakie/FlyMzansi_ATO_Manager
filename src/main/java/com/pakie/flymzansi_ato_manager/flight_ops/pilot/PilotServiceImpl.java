@@ -17,8 +17,9 @@ public class PilotServiceImpl implements PilotService {
     }
 
     @Override
-    public void savePilot(Pilot pilot) {
+    public Pilot savePilot(Pilot pilot) {
         this.pilotRepo.save(pilot);
+        return pilot;
     }
 
     @Override

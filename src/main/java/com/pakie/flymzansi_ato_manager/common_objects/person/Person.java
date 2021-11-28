@@ -13,13 +13,16 @@ public class Person {
     private String email;
     private String cell;
     private String address;
+    @Column(name = "image", length=45, nullable = true)
+    private String image;
 
-    public Person(String firstName, String lastName, String email, String cell, String address) {
+    public Person(String firstName, String lastName, String email, String cell, String address, String image) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.cell = cell;
         this.address = address;
+        this.image = image;
     }
 
     public Person() {
@@ -74,6 +77,21 @@ public class Person {
         this.address = address;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image =image;
+    }
+
+    @Transient
+    public String getImagePath() {
+        if (image == null || email == null)
+            return null;
+        return "/global_assets/images/uploads/user/" + email + "/" + image;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -83,6 +101,7 @@ public class Person {
                 ", email='" + email + '\'' +
                 ", cell='" + cell + '\'' +
                 ", address='" + address + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
