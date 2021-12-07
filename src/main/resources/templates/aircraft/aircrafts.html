@@ -36,11 +36,11 @@
             <tr th:each="aircraft: ${aircrafts}">
                 <td>
                     <span th:if="${aircraft.image == null || aircraft.image == ''}">
-                        <a id="photoButton" th:href="@{'/global_assets/images/placeholders/pane_placeholder2.png'}">
+                        <a id="photoButton1" th:href="@{'/global_assets/images/placeholders/pane_placeholder2.png'}">
                         <img th:src="@{'/global_assets/images/placeholders/plane_placeholder2.png'}" width="40" height="40"></a>
                     </span>
                     <span th:unless="${aircraft.image == null || aircraft.image == ''}">
-                        <a id="aircraftPhotoButton" th:href="@{${aircraft.imagePath}}">
+                        <a id="aircraftPhotoButton1" th:href="@{${aircraft.imagePath}}">
                         <img th:src="@{${aircraft.imagePath}}" width="40" height="40"/></a>
                     </span>
                 </td>
@@ -71,25 +71,27 @@
     </div>
     <!-- /whole row as a control -->
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="photoModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Photo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img id="employeePhoto" src="" width="90%" height="90%">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="photoButton">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="aircraftPhotoButton" src="" width="90%" height="90%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

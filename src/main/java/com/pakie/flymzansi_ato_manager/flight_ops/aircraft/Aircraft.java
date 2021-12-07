@@ -2,6 +2,7 @@ package com.pakie.flymzansi_ato_manager.flight_ops.aircraft;
 
 import com.pakie.flymzansi_ato_manager.common_objects.CommonObject;
 import com.pakie.flymzansi_ato_manager.flight_ops.aircraft_type.AircraftType;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
@@ -11,6 +12,10 @@ public class Aircraft extends CommonObject {
 
     @Column(name = "image", length=45, nullable = true)
     private String image;
+
+    @Value("${aircraft-image.folder}")
+    private String imageFolder;
+
     @Column(nullable = false, unique = true)
     private String registration;
     private String colour;
