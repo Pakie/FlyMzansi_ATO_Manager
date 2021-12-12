@@ -21,6 +21,10 @@
         </div>
 
         <div class="card-body">
+
+            <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+            <p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
             <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post" enctype="multipart/form-data">
                 <input hidden th:field="*{id}" th:value="${employee.id}">
                 <div class="form-group row">

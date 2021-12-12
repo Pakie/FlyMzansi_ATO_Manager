@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -42,29 +44,28 @@ public class MechanicController {
 
     @PostMapping("/saveMechanic")
     public String saveMechanic(@ModelAttribute("mechanic") Mechanic mechanic,
-                               @RequestParam("imageFile")MultipartFile multipartFile) throws IOException {
+                               @RequestParam("fileImage")MultipartFile imageFile, RedirectAttributes redirectAttributes) throws IOException {
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
         mechanic.setImage(fileName);
         Mechanic savedMechanic = mechanicService.saveMechanic(mechanic);
 
         //The directory will be updated accordingly for production
-        String uploadDir = "./src/main/resources/static/global_assets/images/uploads/user/" + savedMechanic.getEmail();
-
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+        if(imageFile.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
+            return "mechanics/add_mechanic";
         }
 
-        try {
-            InputStream inputStream = multipartFile.getInputStream();
-            Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toString());
+        File file = mechanicService.upload(imageFile, mechanic);
+        if(file == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
+            return "mechanics/add_mechanic";
+        }
 
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Oops! Failed to upload file " + fileName);
+        boolean resizeResult =  mechanicService.resizeImage(file, mechanic);
+        if(!resizeResult) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
+            return "aircraft/add_aircraft";
         }
 
         return "redirect:/mechanics";

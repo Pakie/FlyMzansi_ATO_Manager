@@ -20,6 +20,9 @@
             </div>
         </div>
 
+        <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+        <p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
         <div class="card-body">
             <form action="#" th:action="@{/saveAircraft}" th:object="${aircraft}" method="post" enctype="multipart/form-data">
                 <input hidden th:field="*{id}" th:value="${aircraft.id}">

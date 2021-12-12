@@ -1,5 +1,6 @@
 package com.pakie.flymzansi_ato_manager.flight_ops.aircraft;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,16 +71,17 @@ public class AircraftServiceImpl implements AircraftService{
             String uploadDir = imageFolder + savedAircraft;
             BufferedImage bufferedImage = ImageIO.read(sourceFile);
             BufferedImage outputImage = Scalr.resize(bufferedImage, imageSize);
-            String newFileName = FilenameUtils.getBaseName(sourceFile.getName())
-                    + "_" + imageSize.toString() + "."
-                    + FilenameUtils.getExtension(sourceFile.getName());
+            String newFileName = sourceFile.getName();
+            //String newFileName = FilenameUtils.getBaseName(sourceFile.getName())
+             //       + "." + FilenameUtils.getExtension(sourceFile.getName());
+                   // + "_" + imageSize.toString() + "."
+
             Path path = Paths.get(uploadDir,newFileName);
             File newImageFile = path.toFile();
-            /*if (!Files.exists(path)) {
-                Files.createDirectories(path);
-            }*/
             ImageIO.write(outputImage, "jpg", newImageFile);
             outputImage.flush();
+            //sourceFile.delete();
+
             return true;
         } catch (IOException e) {
             logger.error(e.getMessage(), e);

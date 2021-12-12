@@ -10,9 +10,6 @@ public interface AircraftService {
     List<Aircraft> getAllAircrafts();
     Aircraft saveAircraft(Aircraft aircraft);
     File upload(MultipartFile imageFile, Aircraft aircraft) throws IOException;
-
-    //File upload(MultipartFile imageFile, Aircraft aircraft) throws IOException;
-
     boolean resizeImage(File sourceFile, Aircraft aircraft);
     Aircraft getAircraftById(Long Id);
     void deleteAircraftById(Long Id);

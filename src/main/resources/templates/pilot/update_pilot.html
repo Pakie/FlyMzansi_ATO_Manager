@@ -21,7 +21,13 @@
         </div>
 
         <div class="card-body">
+
+            <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+            <p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
             <form action="#" th:action="@{/savePilot}" th:object="${pilot}" method="post" enctype="multipart/form-data">
+
+
                 <input hidden th:field="*{id}" th:value="${pilot.id}">
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label">First Name:</label>

@@ -21,6 +21,9 @@
         </div>
 
         <div class="card-body">
+
+            <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
             <form action="#" th:action="@{/saveAircraft}" th:object="${aircraft}" method="post" enctype="multipart/form-data">
 
                 <div class="form-group row">

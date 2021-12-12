@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -72,30 +74,26 @@ public class InstructorController {
 
     @PostMapping("/saveInstructor")
     public String saveInstructor(@ModelAttribute("instructor") Instructor instructor,
-                                 @RequestParam("fileImage")MultipartFile multipartFile) throws IOException {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+                                 @RequestParam("fileImage")MultipartFile imageFile, RedirectAttributes redirectAttributes) throws IOException {
+        String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
         instructor.setImage(fileName);
         Instructor savedInstructor = instructorService.saveInstructor(instructor);
 
-        instructorService.saveInstructor(instructor);
-
-        //The directory will be updated accordingly for production
-        String uploadDir = "./src/main/resources/static/global_assets/images/uploads/user/" + savedInstructor.getEmail();
-
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+        if(imageFile.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
+            return "instructors/add_instructor";
         }
 
-        try {
-            InputStream inputStream = multipartFile.getInputStream();
-            Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toString());
+        File file = instructorService.upload(imageFile, instructor);
+        if(file == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
+            return "instructors/add_instructor";
+        }
 
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Oops! Failed to upload file " + fileName);
+        boolean resizeResult =  instructorService.resizeImage(file, instructor);
+        if(!resizeResult) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
+            return "instructors/add_instructor";
         }
 
         return "redirect:/employees/instructors";

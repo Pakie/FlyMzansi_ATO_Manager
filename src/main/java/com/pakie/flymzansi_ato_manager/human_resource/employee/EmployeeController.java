@@ -5,14 +5,17 @@ import com.pakie.flymzansi_ato_manager.human_resource.position.PositionService;
 import com.pakie.flymzansi_ato_manager.human_resource.employment_type.EmploymentTypeService;
 import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -36,6 +39,12 @@ public class EmployeeController {
     @Autowired
     DepartmentService departmentService;
 
+    @Value("${user-image.folder}")
+    private String imageFolder;
+
+    @Value("${user-image.size}")
+    private Integer imageSize;
+
     //List Employees
     @GetMapping("/employees")
     //public String employees(){
@@ -57,38 +66,27 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee,
-                               @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+                               @RequestParam("fileImage") MultipartFile imageFile, RedirectAttributes redirectAttributes) throws IOException {
+        String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
 
         employee.setImage(fileName);
         Employee savedEmployee = employeeService.saveEmployee(employee);
 
-        //The directory will be updated accordingly for production
-        String uploadDir = "./src/main/resources/static/global_assets/images/uploads/user/" + savedEmployee.getEmail();
-
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+        if(imageFile.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
+            return "employees/add_employee";
         }
 
-        try {
-            InputStream inputStream = multipartFile.getInputStream();
-            Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toString());
+        File file = employeeService.upload(imageFile, employee);
+        if(file == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
+            return "employees/add_employee";
+        }
 
-            /*BufferedImage fileImage = ImageIO.read(inputStream);
-            //if (fileImage == null) { System.err.println("NO SOURCE IMAGE!"); }
-            BufferedImage newImage = new BufferedImage(int 400,);
-
-            BufferedImage simpleResizeImage(BufferedImage originalImage, int targetWidth) throws Exception {
-                return Scalr.resize(originalImage, targetWidth);
-            }*/
-
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-
-        } catch (IOException e) {
-            throw new IOException("Oops! Failed to upload file " + fileName);
+        boolean resizeResult =  employeeService.resizeImage(file, employee);
+        if(!resizeResult) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
+            return "employees/add_employee";
         }
 
         return "redirect:/employees";

@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -47,28 +49,26 @@ public class PilotController {
 
     @PostMapping("/savePilot")
     public String savePilot(@ModelAttribute("pilot") Pilot pilot,
-                            @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+                            @RequestParam("fileImage") MultipartFile imageFile, RedirectAttributes redirectAttributes) throws IOException {
+        String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
         pilot.setImage(fileName);
         Pilot savedPilot = pilotService.savePilot(pilot);
 
-        //The directory will be updated accordingly for production
-        String uploadDir = "./src/main/resources/static/global_assets/images/uploads/user/" + savedPilot.getEmail();
-
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+        if(imageFile.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
+            return "pilots/add_pilot";
         }
 
-        try {
-            InputStream inputStream = multipartFile.getInputStream();
-            Path filePath = uploadPath.resolve(fileName);
-            System.out.println(filePath.toString());
+        File file = pilotService.upload(imageFile, pilot);
+        if(file == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
+            return "pilots/add_pilot";
+        }
 
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Oops! Failed to upload file " + fileName);
+        boolean resizeResult =  pilotService.resizeImage(file, pilot);
+        if(!resizeResult) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
+            return "pilots/add_pilot";
         }
 
         return "redirect:/pilots";
