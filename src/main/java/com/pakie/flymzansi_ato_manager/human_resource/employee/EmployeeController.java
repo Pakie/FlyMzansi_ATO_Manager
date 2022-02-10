@@ -74,19 +74,19 @@ public class EmployeeController {
 
         if(imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
-            return "employees/add_employee";
+            return "employees";
         }
 
         File file = employeeService.upload(imageFile, employee);
         if(file == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
-            return "employees/add_employee";
+            return "employees/add-employee";
         }
 
         boolean resizeResult =  employeeService.resizeImage(file, employee);
         if(!resizeResult) {
             redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
-            return "employees/add_employee";
+            return "employees/add-employee";
         }
 
         return "redirect:/employees";

@@ -1,7 +1,9 @@
 package com.pakie.flymzansi_ato_manager.web.controller;
 
+import com.pakie.flymzansi_ato_manager.user.EmailExistsException;
 import com.pakie.flymzansi_ato_manager.user.UserService;
 import com.pakie.flymzansi_ato_manager.web.dto.UserRegistrationDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +31,7 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
+    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) throws EmailExistsException {
 
         userService.save(registrationDto);
         return "redirect:/registration?success";

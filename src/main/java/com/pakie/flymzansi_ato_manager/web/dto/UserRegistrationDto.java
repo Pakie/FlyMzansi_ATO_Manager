@@ -14,14 +14,15 @@ public class UserRegistrationDto {
 
     @NotNull
     private String password;
-    private String matchingPassword;
 
-    public UserRegistrationDto(String firstName, String lastName, String email, String password, String matchingPassword) {
+    private boolean enable;
+
+    public UserRegistrationDto(String firstName, String lastName, String email, String password, boolean enable) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.matchingPassword = matchingPassword;
+        this.enable = enable;
     }
 
     public UserRegistrationDto() {
@@ -60,7 +61,11 @@ public class UserRegistrationDto {
         this.password = password;
     }
 
-    public String getMatchingPassword() { return matchingPassword; }
+    public boolean isEnable() {
+        return enable;
+    }
 
-    public void setMatchingPassword(String matchingPassword) { this.matchingPassword = matchingPassword; }
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
 }
