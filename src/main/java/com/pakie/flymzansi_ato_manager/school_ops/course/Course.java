@@ -13,8 +13,8 @@ public class Course extends CommonObject {
     @OneToMany(mappedBy = "course")
     Set<Subject> subjects;
 
-    public Course(String title, String description, String details, Set<Subject> subjects) {
-        super(title, description, details);
+    public Course(String title, String description, Set<Subject> subjects) {
+        super(title, description);
         this.subjects = subjects;
     }
 

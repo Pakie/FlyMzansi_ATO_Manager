@@ -81,19 +81,19 @@ public class InstructorController {
 
         if(imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "Please choose file to upload.");
-            return "instructors/add_instructor";
+            return "employees/instructors/add_instructor";
         }
 
         File file = instructorService.upload(imageFile, instructor);
         if(file == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Upload failed.");
-            return "instructors/add_instructor";
+            return "employees/instructors/add_instructor";
         }
 
         boolean resizeResult =  instructorService.resizeImage(file, instructor);
         if(!resizeResult) {
             redirectAttributes.addFlashAttribute("errorMessage", "Resize failed.");
-            return "instructors/add_instructor";
+            return "employees/instructors/add_instructor";
         }
 
         return "redirect:/employees/instructors";

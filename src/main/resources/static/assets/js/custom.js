@@ -123,7 +123,7 @@ var DatatableButtons = function() {
                     text: 'Add New',
                     className: 'btn bg-teal-400',
                     action: function(e, dt, node, config) {
-                        window.location.href = "rooms/room-categories/add-room-category"
+                        window.location.href = "room-categories/add-room-category"
                     }
                 }
             ]

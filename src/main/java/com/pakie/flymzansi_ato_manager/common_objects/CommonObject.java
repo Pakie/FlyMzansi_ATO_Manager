@@ -12,12 +12,10 @@ public class CommonObject {
     private Long id;
     private String title;
     private String description;
-    private String details;
 
-    public CommonObject(String title, String description, String details) {
+    public CommonObject(String title, String description) {
         this.title = title;
         this.description = description;
-        this.details = details;
     }
 
     public CommonObject() {
@@ -48,21 +46,12 @@ public class CommonObject {
         this.description = description;
     }
 
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
     @Override
     public String toString() {
         return "CommonObject{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", details='" + details + '\'' +
                 '}';
     }
 }

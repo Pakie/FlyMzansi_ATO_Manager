@@ -13,8 +13,8 @@ public class AircraftType extends CommonObject {
     @OneToMany(mappedBy = "aircraftType")
     List<Aircraft> aircrafts;
 
-    public AircraftType(String title, String description, String details, List<Aircraft> aircrafts) {
-        super(title, description, details);
+    public AircraftType(String title, String description, List<Aircraft> aircrafts) {
+        super(title, description);
         this.aircrafts = aircrafts;
     }
 

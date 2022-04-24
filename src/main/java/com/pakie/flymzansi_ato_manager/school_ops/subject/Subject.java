@@ -12,8 +12,8 @@ public class Subject extends CommonObject {
     @ManyToOne(fetch = FetchType.EAGER)
     private Course course;
 
-    public Subject(String title, String description, String details, Course course) {
-        super(title, description, details);
+    public Subject(String title, String description, Course course) {
+        super(title, description);
         this.course = course;
     }
 

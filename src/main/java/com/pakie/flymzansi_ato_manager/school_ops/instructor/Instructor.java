@@ -1,6 +1,8 @@
 package com.pakie.flymzansi_ato_manager.school_ops.instructor;
 
+import com.pakie.flymzansi_ato_manager.booking.WorkingPlan;
 import com.pakie.flymzansi_ato_manager.flight_ops.aircraft.Aircraft;
+import com.pakie.flymzansi_ato_manager.flight_ops.flight.TrainingFlight;
 import com.pakie.flymzansi_ato_manager.human_resource.department.Department;
 import com.pakie.flymzansi_ato_manager.human_resource.position.Position;
 import com.pakie.flymzansi_ato_manager.human_resource.employment_type.EmploymentType;
@@ -53,6 +55,14 @@ public class Instructor extends Employee {
             )
     )
     List<Rating> ratings;
+
+    @OneToMany(mappedBy = "instructor")
+    List<TrainingFlight> trainingFlights;
+
+    @OneToOne(mappedBy = "instructor", cascade = {CascadeType.ALL})
+    private WorkingPlan workingPlan;
+
+
 
     public Instructor(String firstName, String lastName, String email, String cell, String address, String image, LocalDate startDate, Double salary, Long taxNumber, Department department, EmploymentType employmentType, Position employmentPosition, String nextOfKin, Long nextOfKinContact, Double flyingHours, License license, String licenseNumber, LocalDate licenseExpiryDate, LocalDate medicalExpiryDate, List<GroundSchool> groundSchools, List<Aircraft> aircrafts, List<Student> students, List<Rating> ratings) {
         super(firstName, lastName, email, cell, address, image, startDate, salary, taxNumber, department, employmentType, employmentPosition);

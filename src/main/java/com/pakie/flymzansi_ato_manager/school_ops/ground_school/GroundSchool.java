@@ -5,6 +5,7 @@ import com.pakie.flymzansi_ato_manager.common_objects.Status;
 import com.pakie.flymzansi_ato_manager.common_objects.room.Room;
 import com.pakie.flymzansi_ato_manager.school_ops.subject.Subject;
 import com.pakie.flymzansi_ato_manager.school_ops.instructor.Instructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,7 +14,8 @@ import java.util.Date;
 @Table(name = "ground_school")
 public class GroundSchool extends CommonObject {
 
-    private Integer seats;
+    private Integer avail_seats;
+
     private Double price;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -24,33 +26,35 @@ public class GroundSchool extends CommonObject {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Instructor instructor;
-    private Date startTime;
-    private Date endTime;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Status status;
 
-    public GroundSchool(String title, String description, String details, Integer seats, Double price, Room room, Subject subject, Instructor instructor, Date startTime, Date endTime, Status status) {
-        super(title, description, details);
-        this.seats = seats;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date startTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date endTime;
+
+
+    public GroundSchool(String title, String description, Integer avail_seats, Double price, Room room, Subject subject, Instructor instructor, Date startTime, Date endTime, Status status) {
+        super(title, description);
+        this.avail_seats = avail_seats;
         this.price = price;
         this.room = room;
         this.subject = subject;
         this.instructor = instructor;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.status = status;
     }
 
     public GroundSchool() {
 
     }
 
-    public Integer getSeats() {
-        return seats;
+    public Integer getAvail_seats() {
+        return avail_seats;
     }
 
-    public void setSeats(Integer seats) {
-        this.seats = seats;
+    public void setAvail_seats(Integer avail_seats) {
+        this.avail_seats = avail_seats;
     }
 
     public Double getPrice() {
@@ -101,11 +105,4 @@ public class GroundSchool extends CommonObject {
         this.endTime = endTime;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

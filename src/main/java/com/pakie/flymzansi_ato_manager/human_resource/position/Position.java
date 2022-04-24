@@ -13,8 +13,8 @@ public class Position extends CommonObject {
     @OneToMany(mappedBy = "position")
     Set<Employee> employees;
 
-    public Position(String title, String description, String details, Long id, Set<Employee> employees) {
-        super(title, description, details);
+    public Position(String title, String description, Long id, Set<Employee> employees) {
+        super(title, description);
         this.employees = employees;
     }
 

@@ -21,25 +21,46 @@
         </div>
 
         <div class="card-body">
-            <form action="#" th:action="@{/saveGoundSchool}" th:object="${groundSchool}" method="post">
+            <form action="#" th:action="@{/saveGroundSchool}" th:object="${groundSchool}" method="post">
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Title:</label>
-                    <div class="col-lg-9">
+                    <div class="col-lg-5">
                         <input type="text" th:field="*{title}" class="form-control" placeholder="Title" name="title">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Date:</label>
-                    <div class="col-lg-9">
-                        <input type="text" th:field="*{startTime}" class="form-control" placeholder="Start Time" name="start_time">
+                    <label class="col-lg-3 col-form-label">Available Seats:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{avail_seats}" class="form-control" name="avail_seats" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Price:</label>
+                    <div class="col-lg-5">
+                        <input type="text" th:field="*{price}" class="form-control" placeholder="Price" name="price">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Start Time:</label>
+                    <div class="col-lg-5">
+                        <input th:text="*{startTime}" class="form-control" type="datetime-local" name="startTime">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">End Time:</label>
+                    <div class="col-lg-5">
+                        <input th:text="*{endTime}" class="form-control" type="datetime-local" name="endTime">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Venue:</label>
-                    <div class="col-lg-9">
+                    <div class="col-lg-5">
                         <select th:field="*{room}" data-placeholder="Select a venue" class="form-control select-clear" data-fouc>
                             <th:block th:each="room: ${rooms}">
                                 <option th:value="${room.id}" th:text="${room.title}"></option>
@@ -50,7 +71,7 @@
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Subject:</label>
-                    <div class="col-lg-9">
+                    <div class="col-lg-5">
                         <select th:field="*{subject}" data-placeholder="Select a subject" class="form-control select-clear" data-fouc>
                             <th:block th:each="subject: ${subjects}">
                                 <option th:value="${subject.id}" th:text="${subject.title}"></option>
@@ -61,7 +82,7 @@
 
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label">Instructor:</label>
-                    <div class="col-lg-9">
+                    <div class="col-lg-5">
                         <select th:field="*{instructor}" data-placeholder="Select an instructor" class="form-control select-clear" data-fouc>
                             <th:block th:each="instructor: ${instructors}">
                                 <option th:value="${instructor.id}" th:text="${instructor.firstName + ' ' + instructor.lastName}"></option>

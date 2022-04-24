@@ -10,8 +10,8 @@ public class Company extends CommonObject {
 
     private String address;
 
-    public Company(String title, String description, String details, String address) {
-        super(title, description, details);
+    public Company(String title, String description, String address) {
+        super(title, description);
         this.address = address;
     }
 

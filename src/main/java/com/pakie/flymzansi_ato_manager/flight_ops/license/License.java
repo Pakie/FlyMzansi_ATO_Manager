@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "license")
 public class License extends CommonObject {
 
-    public License(String title, String description, String details, Long id) {
-        super(title, description, details);
+    public License(String title, String description, Long id) {
+        super(title, description);
     }
 
     public License() {

@@ -16,8 +16,8 @@ public class Room extends CommonObject {
     @ManyToOne(fetch = FetchType.EAGER)
     private RoomCategory roomCategory;
 
-    public Room(String title, String description, String details, Integer seats, Status status, RoomCategory roomCategory) {
-        super(title, description, details);
+    public Room(String title, String description, Integer seats, Status status, RoomCategory roomCategory) {
+        super(title, description);
         this.seats = seats;
         this.status = status;
         this.roomCategory = roomCategory;

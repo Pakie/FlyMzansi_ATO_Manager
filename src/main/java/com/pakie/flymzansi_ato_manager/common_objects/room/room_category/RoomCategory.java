@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "room_category")
 public class RoomCategory extends CommonObject {
 
-    public RoomCategory(String title, String description, String details, Long id) {
-        super(title, description, details);
+    public RoomCategory(String title, String description, Long id) {
+        super(title, description);
     }
 
     public RoomCategory() {

@@ -10,8 +10,8 @@ public class Simulator extends CommonObject {
 
     private String type;
 
-    public Simulator(String title, String description, String details, String type) {
-        super(title, description, details);
+    public Simulator(String title, String description, String type) {
+        super(title, description);
         this.type = type;
     }
 

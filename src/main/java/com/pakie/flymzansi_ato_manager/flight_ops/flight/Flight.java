@@ -1,26 +1,26 @@
 package com.pakie.flymzansi_ato_manager.flight_ops.flight;
 
-import com.pakie.flymzansi_ato_manager.common_objects.CommonObject;
+import com.pakie.flymzansi_ato_manager.booking.Work;
 import com.pakie.flymzansi_ato_manager.flight_ops.aircraft.Aircraft;
+import com.pakie.flymzansi_ato_manager.school_ops.instructor.Instructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "flight")
-public class Flight extends CommonObject {
-
-    @ManyToOne(fetch = FetchType.EAGER)
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Flight extends Work {
+    @ManyToOne
     private Aircraft aircraft;
-    private Double price;
-
-    public Flight(String title, String description, String details, Aircraft aircraft, Double price) {
-        super(title, description, details);
-        this.aircraft = aircraft;
-        this.price = price;
-    }
 
     public Flight() {
 
+    }
+
+    public Flight(String title, String description, double price, int duration, boolean editable, String targetCustomer, Aircraft aircraft) {
+        super(title, description, price, duration, editable, targetCustomer);
+        this.aircraft = aircraft;
     }
 
     public Aircraft getAircraft() {
@@ -29,13 +29,5 @@ public class Flight extends CommonObject {
 
     public void setAircraft(Aircraft aircraft) {
         this.aircraft = aircraft;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 }

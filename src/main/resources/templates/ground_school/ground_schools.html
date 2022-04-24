@@ -36,10 +36,10 @@
 
             <tr th:each="groundSchool: ${groundSchools}">
                 <td th:text="${groundSchool.title}"></td>
-                <td th:text="${groundSchool.subject}"></td>
-                <td th:text="${groundSchool.room}"><a href="#"></a></td>
+                <td th:text="${groundSchool.subject.title}"></td>
+                <td th:text="${groundSchool.room.title}"><a href="#"></a></td>
                 <td th:text="${groundSchool.startTime}"></td>
-                <td th:text="${groundSchool.instructor}"></td>
+                <td th:text="${groundSchool.instructor.firstName + ' ' + groundSchool.instructor.lastName}"></td>
                 <td th:text="${groundSchool.price}"></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td class="text-center">

@@ -19,8 +19,8 @@ public class Event extends CommonObject {
     @ManyToOne(fetch = FetchType.EAGER)
     private Status status;
 
-    public Event(String title, String description, String details, Date startTime, Date endTime, Room room, Status status) {
-        super(title, description, details);
+    public Event(String title, String description, Date startTime, Date endTime, Room room, Status status) {
+        super(title, description);
         this.startTime = startTime;
         this.endTime = endTime;
         this.room = room;

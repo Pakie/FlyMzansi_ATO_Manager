@@ -1,6 +1,7 @@
 package com.pakie.flymzansi_ato_manager.school_ops.ground_school;
 
 import com.pakie.flymzansi_ato_manager.common_objects.room.RoomService;
+import com.pakie.flymzansi_ato_manager.school_ops.exam.Exam;
 import com.pakie.flymzansi_ato_manager.school_ops.subject.SubjectService;
 import com.pakie.flymzansi_ato_manager.school_ops.instructor.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +46,11 @@ public class GroundSchoolController {
     }
 
     @PostMapping("/saveGroundSchool")
-    public String saveGroundSchool(@ModelAttribute("groundSchool") GroundSchool groundSchool){
+    public String saveGroundSchool(@ModelAttribute("exam") GroundSchool groundSchool){
         groundSchoolService.saveGroundSchool(groundSchool);
         return "redirect:/ground-schools";
     }
+
     @GetMapping("/ground-schools/update-ground-school/{id}")
     public String updateGroundSchool(@PathVariable(value = "id") Long id, Model model){
         GroundSchool groundSchool = groundSchoolService.getGroundSchoolById(id);

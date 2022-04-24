@@ -1,26 +1,36 @@
 package com.pakie.flymzansi_ato_manager.school_ops.exam;
 
+import com.pakie.flymzansi_ato_manager.booking.Work;
 import com.pakie.flymzansi_ato_manager.common_objects.CommonObject;
+import com.pakie.flymzansi_ato_manager.common_objects.room.Room;
+import com.pakie.flymzansi_ato_manager.school_ops.invigilator.Invigilator;
 import com.pakie.flymzansi_ato_manager.school_ops.subject.Subject;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "exam")
-public class Exam extends CommonObject {
+public class Exam extends Work {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Subject subject;
-    private Double duration;
-    private Double passMark;
-    private Double price;
 
-    public Exam(String title, String description, String details, Subject subject, Double duration, Double passMark, Double price) {
-        super(title, description, details);
+    @ManyToOne
+    @JoinColumn(name = "invigilator_id")
+    private Invigilator invigilator;
+    private Double passMark;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room examRoom;
+
+
+    public Exam(String title, String description, double price, int duration, boolean editable, String targetCustomer, Subject subject, Invigilator invigilator, Double passMark, Room examRoom) {
+        super(title, description, price, duration, editable, targetCustomer);
         this.subject = subject;
-        this.duration = duration;
+        this.invigilator = invigilator;
         this.passMark = passMark;
-        this.price = price;
+        this.examRoom = examRoom;
     }
 
     public Exam() {
@@ -35,12 +45,12 @@ public class Exam extends CommonObject {
         this.subject = subject;
     }
 
-    public Double getDuration() {
-        return duration;
+    public Invigilator getInvigilator() {
+        return invigilator;
     }
 
-    public void setDuration(Double duration) {
-        this.duration = duration;
+    public void setInvigilator(Invigilator invigilator) {
+        this.invigilator = invigilator;
     }
 
     public Double getPassMark() {
@@ -51,11 +61,11 @@ public class Exam extends CommonObject {
         this.passMark = passMark;
     }
 
-    public Double getPrice() {
-        return price;
+    public Room getExamRoom() {
+        return examRoom;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setExamRoom(Room examRoom) {
+        this.examRoom = examRoom;
     }
 }

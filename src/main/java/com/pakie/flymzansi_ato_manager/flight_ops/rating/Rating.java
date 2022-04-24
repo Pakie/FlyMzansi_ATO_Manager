@@ -19,8 +19,8 @@ public class Rating extends CommonObject {
     @ManyToMany(mappedBy = "ratings")
     List<Pilot> pilots;
 
-    public Rating(String title, String description, String details, List<Student> students, List<Instructor> instructors, List<Pilot> pilots) {
-        super(title, description, details);
+    public Rating(String title, String description, List<Student> students, List<Instructor> instructors, List<Pilot> pilots) {
+        super(title, description);
         this.students = students;
         this.instructors = instructors;
         this.pilots = pilots;
